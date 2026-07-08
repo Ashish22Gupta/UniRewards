@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UniRewards - Earn & Redeem</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet" />
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet" />
+
+    <!-- Slick Carousel -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link href="src/css/style.css" rel="stylesheet" />
+
+    <style>
+        .font-inter { font-family: 'Inter', sans-serif; }
+        .font-york { font-family: 'York Grot', 'Inter', sans-serif; }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================
+    NAVBAR
+    ============================================ -->
+    <nav class="navbar-main fixed top-0 left-0 right-0 z-50 bg-white shadow-md transition-all duration-300" id="mainNav">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-2">
+                    <img src="images/logo.png" alt="UniRewards" class="h-12 w-auto" />
+                    <span class="text-xl font-bold text-[#001E82] font-york">UniRewards</span>
+                </a>
+
+                <!-- Desktop Nav -->
+                <ul class="hidden md:flex items-center gap-8 text-[#212529] font-semibold">
+                    <li><a href="#challenges" class="nav-link">Challenges</a></li>
+                    <li><a href="#rewards" class="nav-link">Rewards</a></li>
+                    <li><a href="#leaderboard" class="nav-link">Leaderboard</a></li>
+                    <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
+                    <li>
+                        <a href="register.html" class="btn-primary px-6 py-2.5 rounded-full text-sm font-bold">
+                            Get Started <i class="bi bi-arrow-right ml-1"></i>
+                        </a>
+                    </li>
+                </ul>
+
+                <!-- Mobile Toggle -->
+                <button class="hamburger md:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5" id="hamburger">
+                    <span class="block w-6 h-0.5 bg-[#001E82] transition-all"></span>
+                    <span class="block w-6 h-0.5 bg-[#001E82] transition-all"></span>
+                    <span class="block w-6 h-0.5 bg-[#001E82] transition-all"></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu hidden md:hidden bg-white border-t border-gray-100" id="mobileMenu">
+            <div class="container mx-auto px-4 py-4">
+                <ul class="flex flex-col gap-3 text-[#212529] font-semibold">
+                    <li><a href="#challenges" class="block py-2 hover:text-[#001E82]">Challenges</a></li>
+                    <li><a href="#rewards" class="block py-2 hover:text-[#001E82]">Rewards</a></li>
+                    <li><a href="#leaderboard" class="block py-2 hover:text-[#001E82]">Leaderboard</a></li>
+                    <li><a href="#testimonials" class="block py-2 hover:text-[#001E82]">Testimonials</a></li>
+                    <li>
+                        <a href="register.html" class="btn-primary block text-center px-6 py-3 rounded-full font-bold">
+                            Get Started <i class="bi bi-arrow-right ml-1"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- ============================================
+    HERO SECTION
+    ============================================ -->
+    <section id="hero" class="hero-section min-h-screen flex items-center pt-20">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+
+                <!-- Left: Hero Content -->
+                <div class="hero-content text-white lg:pr-12">
+                    <div class="inline-block px-4 py-1.5 bg-[#FFD200]/20 rounded-full text-sm font-semibold text-[#FFD200] mb-4">
+                        🎯 Join 10,000+ Users
+                    </div>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight font-york">
+                        Earn Rewards <br />
+                        <span class="text-[#FFD200]">Every Day</span>
+                    </h1>
+                    <p class="text-lg md:text-xl mt-4 opacity-90 max-w-lg leading-relaxed">
+                        Complete challenges, collect stickers, scratch cards, and redeem real rewards. Start earning today!
+                    </p>
+                    <div class="flex flex-wrap gap-4 mt-8">
+                        <a href="register.html" class="btn-hero px-8 py-3.5 rounded-full font-bold text-sm flex items-center gap-2">
+                            Start Earning <i class="bi bi-arrow-right"></i>
+                        </a>
+                        <a href="#challenges" class="px-8 py-3.5 rounded-full font-bold text-sm border-2 border-white/30 text-white hover:bg-white/10 transition">
+                            View Challenges
+                        </a>
+                    </div>
+
+                    <!-- Live Stats -->
+                    <div class="grid grid-cols-3 gap-4 mt-12 pt-8 border-t border-white/20">
+                        <div>
+                            <p class="text-3xl font-bold text-[#FFD200]" id="userCount">10K+</p>
+                            <p class="text-sm opacity-70">Active Users</p>
+                        </div>
+                        <div>
+                            <p class="text-3xl font-bold text-[#FFD200]" id="rewardCount">50+</p>
+                            <p class="text-sm opacity-70">Rewards Given</p>
+                        </div>
+                        <div>
+                            <p class="text-3xl font-bold text-[#FFD200]" id="cashCount">₹5L+</p>
+                            <p class="text-sm opacity-70">Cashback Earned</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Registration Form -->
+                <div class="form-card bg-white rounded-2xl shadow-2xl p-6 md:p-8 lg:p-10">
+                    <h2 class="text-2xl md:text-3xl font-bold text-[#001E82] font-york mb-6">
+                        Start Earning Now
+                    </h2>
+
+                    <form id="heroForm" class="space-y-4">
+                        <div>
+                            <label class="form-label">Full Name <span class="text-red-500">*</span></label>
+                            <input type="text" class="form-input w-full" placeholder="John Doe" required />
+                        </div>
+
+                        <div>
+                            <label class="form-label">Email <span class="text-red-500">*</span></label>
+                            <input type="email" class="form-input w-full" placeholder="john@example.com" required />
+                        </div>
+
+                        <div>
+                            <label class="form-label">Phone Number <span class="text-red-500">*</span></label>
+                            <input type="tel" class="form-input w-full" placeholder="9876543210" required pattern="[6-9]\d{9}" maxlength="10" />
+                        </div>
+
+                        <div>
+                            <label class="form-label">Interested In <span class="text-red-500">*</span></label>
+                            <select class="form-select w-full" required>
+                                <option value="" disabled selected>Select a category</option>
+                                <option>Gaming Challenges</option>
+                                <option>Product Reviews</option>
+                                <option>Social Media Tasks</option>
+                                <option>Referral Programs</option>
+                                <option>All of the above</option>
+                            </select>
+                        </div>
+
+                        <div class="flex items-start gap-3">
+                            <input type="checkbox" id="heroTerms" class="mt-1 w-4 h-4 accent-[#001E82]" required />
+                            <label for="heroTerms" class="text-xs text-gray-600">
+                                I agree to the <a href="#" class="text-[#001E82] underline">Terms & Conditions</a>.
+                            </label>
+                        </div>
+
+                        <button type="submit" class="btn-primary w-full py-3.5 rounded-full font-bold text-sm">
+                            Join Now <i class="bi bi-arrow-right ml-1"></i>
+                        </button>
+                    </form>
+
+                    <p class="text-center text-xs text-gray-500 mt-4">
+                        Already a member? <a href="register.html" class="text-[#001E82] font-semibold">Login here</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ============================================
+    HOW IT WORKS
+    ============================================ -->
+    <section class="py-16 md:py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-center text-3xl md:text-4xl font-bold text-[#001E82] font-york mb-4">
+                How It Works
+            </h2>
+            <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+                Three simple steps to start earning real rewards
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Step 1 -->
+                <div class="text-center">
+                    <div class="w-20 h-20 rounded-full bg-[#001E82]/10 flex items-center justify-center mx-auto mb-4 text-3xl text-[#001E82]">
+                        1
+                    </div>
+                    <h3 class="text-xl font-bold font-york">Sign Up</h3>
+                    <p class="text-gray-600 mt-2 text-sm">Create your account in 2 minutes. It's free!</p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="text-center">
+                    <div class="w-20 h-20 rounded-full bg-[#EAA221]/10 flex items-center justify-center mx-auto mb-4 text-3xl text-[#EAA221]">
+                        2
+                    </div>
+                    <h3 class="text-xl font-bold font-york">Complete Tasks</h3>
+                    <p class="text-gray-600 mt-2 text-sm">Participate in challenges, complete tasks, earn points</p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="text-center">
+                    <div class="w-20 h-20 rounded-full bg-[#79B619]/10 flex items-center justify-center mx-auto mb-4 text-3xl text-[#79B619]">
+                        3
+                    </div>
+                    <h3 class="text-xl font-bold font-york">Redeem Rewards</h3>
+                    <p class="text-gray-600 mt-2 text-sm">Exchange points for cashback, vouchers, and gifts</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ============================================
+    ACHIEVEMENT STATS
+    ============================================ -->
+    <section class="py-16 md:py-20 bg-[#001E82]">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+                <div class="ranking-card bg-[#0c31AC] rounded-xl p-6 text-center text-white">
+                    <div class="text-4xl mb-2">🏆</div>
+                    <p class="text-3xl md:text-4xl font-bold">1,247</p>
+                    <p class="text-sm opacity-80 mt-1">Challenges Completed</p>
+                </div>
+                <div class="ranking-card bg-[#0c31AC] rounded-xl p-6 text-center text-white">
+                    <div class="text-4xl mb-2">⭐</div>
+                    <p class="text-3xl md:text-4xl font-bold">4.8</p>
+                    <p class="text-sm opacity-80 mt-1">Average Rating</p>
+                </div>
+                <div class="ranking-card bg-[#0c31AC] rounded-xl p-6 text-center text-white">
+                    <div class="text-4xl mb-2">🎯</div>
+                    <p class="text-3xl md:text-4xl font-bold">93%</p>
+                    <p class="text-sm opacity-80 mt-1">Task Completion Rate</p>
+                </div>
+                <div class="ranking-card bg-[#0c31AC] rounded-xl p-6 text-center text-white">
+                    <div class="text-4xl mb-2">💰</div>
+                    <p class="text-3xl md:text-4xl font-bold">₹5.2L</p>
+                    <p class="text-sm opacity-80 mt-1">Total Rewards Given</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ============================================
+    ACTIVE CHALLENGES (Replaces Courses)
+    ============================================ -->
+    <section id="challenges" class="py-16 md:py-20 bg-[#f8f9fa]">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-3xl md:text-4xl font-bold text-[#001E82] font-york">
+                    Active Challenges
+                </h2>
+                <a href="#" class="text-[#001E82] font-semibold text-sm hover:underline">
+                    View All <i class="bi bi-arrow-right"></i>
+                </a>
+            </div>
+            <p class="text-gray-600 mb-10 max-w-2xl">
+                Complete these challenges to earn points and unlock rewards
+            </p>
+
+            <div class="challenges-slider">
+                <!-- Challenge 1 -->
+                <div class="challenge-card bg-white rounded-xl shadow-md overflow-hidden mx-3">
+                    <div class="relative">
+                        <img src="https://picsum.photos/400/200?random=10" alt="Challenge" class="w-full h-48 object-cover" />
+                        <span class="absolute top-3 right-3 px-3 py-1 bg-[#79B619] text-white text-xs font-bold rounded-full">
+                            Easy
+                        </span>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-xl font-bold font-york text-[#001E82]">Complete 5 Surveys</h3>
+                        <p class="text-gray-600 text-sm mt-1">Share your opinion and earn points</p>
+                        <div class="mt-3 flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <i class="bi bi-star-fill text-[#EAA221]"></i>
+                                <span class="font-bold text-[#EAA221]">50 pts</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-sm text-gray-500">
+                                <i class="bi bi-people"></i>
+                                <span>234 joined</span>
+                            </div>
+                        </div>
+                        <a href="#" class="inline-block mt-4 px-6 py-2 bg-[#001E82] text-white rounded-full font-bold text-sm hover:bg-[#0c31AC] transition">
+                            Join Challenge
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Challenge 2 -->
+                <div class="challenge-card bg-white rounded-xl shadow-md overflow-hidden mx-3">
+                    <div class="relative">
+                        <img src="https://picsum.photos/400/200?random=11" alt="Challenge" class="w-full h-48 object-cover" />
+                        <span class="absolute top-3 right-3 px-3 py-1 bg-[#EAA221] text-white text-xs font-bold rounded-full">
+                            Medium
+                        </span>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-xl font-bold font-york text-[#001E82]">Social Media Post</h3>
+                        <p class="text-gray-600 text-sm mt-1">Create a post about your experience</p>
+                        <div class="mt-3 flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <i class="bi bi-star-fill text-[#EAA221]"></i>
+                                <span class="font-bold text-[#EAA221]">100 pts</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-sm text-gray-500">
+                                <i class="bi bi-people"></i>
+                                <span>156 joined</span>
+                            </div>
+                        </div>
+                        <a href="#" class="inline-block mt-4 px-6 py-2 bg-[#001E82] text-white rounded-full font-bold text-sm hover:bg-[#0c31AC] transition">
+                            Join Challenge
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Challenge 3 -->
+                <div class="challenge-card bg-white rounded-xl shadow-md overflow-hidden mx-3">
+                    <div class="relative">
+                        <img src="https://picsum.photos/400/200?random=12" alt="Challenge" class="w-full h-48 object-cover" />
+                        <span class="absolute top-3 right-3 px-3 py-1 bg-[#b31602] text-white text-xs font-bold rounded-full">
+                            Hard
+                        </span>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-xl font-bold font-york text-[#001E82]">Referral Challenge</h3>
+                        <p class="text-gray-600 text-sm mt-1">Refer 5 friends to join the platform</p>
+                        <div class="mt-3 flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <i class="bi bi-star-fill text-[#EAA221]"></i>
+                                <span class="font-bold text-[#EAA221]">200 pts</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-sm text-gray-500">
+                                <i class="bi bi-people"></i>
+                                <span>89 joined</span>
+                            </div>
+                        </div>
+                        <a href="#" class="inline-block mt-4 px-6 py-2 bg-[#001E82] text-white rounded-full font-bold text-sm hover:bg-[#0c31AC] transition">
+                            Join Challenge
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Challenge 4 -->
+                <div class="challenge-card bg-white rounded-xl shadow-md overflow-hidden mx-3">
+                    <div class="relative">
+                        <img src="https://picsum.photos/400/200?random=13" alt="Challenge" class="w-full h-48 object-cover" />
+                        <span class="absolute top-3 right-3 px-3 py-1 bg-[#79B619] text-white text-xs font-bold rounded-full">
+                            Easy
+                        </span>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-xl font-bold font-york text-[#001E82]">Daily Check-in</h3>
+                        <p class="text-gray-600 text-sm mt-1">Check in daily for 7 days straight</p>
+                        <div class="mt-3 flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <i class="bi bi-star-fill text-[#EAA221]"></i>
+                                <span class="font-bold text-[#EAA221]">25 pts</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-sm text-gray-500">
+                                <i class="bi bi-people"></i>
+                                <span>1.2K joined</span>
+                            </div>
+                        </div>
+                        <a href="#" class="inline-block mt-4 px-6 py-2 bg-[#001E82] text-white rounded-full font-bold text-sm hover:bg-[#0c31AC] transition">
+                            Join Challenge
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ============================================
+    REWARDS PREVIEW
+    ============================================ -->
+    <section id="rewards" class="py-16 md:py-20 bg-gradient-to-br from-[#361714] to-[#1E1412] text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold font-york text-[#FFD200]">
+                    <i class="bi bi-gift-fill text-[#EAA221]"></i> Available Rewards
+                </h2>
+                <p class="text-gray-300 mt-2">Redeem your points for these exciting rewards</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Reward 1 -->
+                <div class="reward-card bg-[#2a1614] rounded-xl p-6 border border-[#EAA221]/20 text-center">
+                    <div class="w-16 h-16 rounded-full bg-[#EAA221]/20 flex items-center justify-center mx-auto mb-4">
+                        <i class="bi bi-cash-stack text-2xl text-[#EAA221]"></i>
+                    </div>
+                    <h3 class="text-xl font-bold font-york">₹100 Cashback</h3>
+                    <p class="text-sm text-gray-400 mt-1">500 points required</p>
+                    <div class="mt-4 h-1 w-full bg-gray-700 rounded-full overflow-hidden">
+                        <div class="h-full w-3/4 bg-gradient-to-r from-[#EFC46E] to-[#EAA221] rounded-full"></div>
+                    </div>
+                    <p class="text-xs text-gray-400 mt-2">75% claimed</p>
+                    <a href="rewards.html" class="inline-block mt-4 px-6 py-2 bg-gradient-to-r from-[#EFC46E] to-[#EAA221] text-black rounded-full font-bold text-sm">
+                        Redeem Now
+                    </a>
+                </div>
+
+                <!-- Reward 2 -->
+                <div class="reward-card bg-[#2a1614] rounded-xl p-6 border border-[#EAA221]/20 text-center">
+                    <div class="w-16 h-16 rounded-full bg-[#EAA221]/20 flex items-center justify-center mx-auto mb-4">
+                        <i class="bi bi-ticket-perforated text-2xl text-[#EAA221]"></i>
+                    </div>
+                    <h3 class="text-xl font-bold font-york">Amazon Voucher</h3>
+                    <p class="text-sm text-gray-400 mt-1">300 points required</p>
+                    <div class="mt-4 h-1 w-full bg-gray-700 rounded-full overflow-hidden">
+                        <div class="h-full w-1/2 bg-gradient-to-r from-[#EFC46E] to-[#EAA221] rounded-full"></div>
+                    </div>
+                    <p class="text-xs text-gray-400 mt-2">50% claimed</p>
+                    <a href="rewards.html" class="inline-block mt-4 px-6 py-2 bg-gradient-to-r from-[#EFC46E] to-[#EAA221] text-black rounded-full font-bold text-sm">
+                        Redeem Now
+                    </a>
+                </div>
+
+                <!-- Reward 3 -->
+                <div class="reward-card bg-[#2a1614] rounded-xl p-6 border border-[#EAA221]/20 text-center">
+                    <div class="w-16 h-16 rounded-full bg-[#EAA221]/20 flex items-center justify-center mx-auto mb-4">
+                        <i class="bi bi-headphones text-2xl text-[#EAA221]"></i>
+                    </div>
+                    <h3 class="text-xl font-bold font-york">Bluetooth Speaker</h3>
+                    <p class="text-sm text-gray-400 mt-1">1000 points required</p>
+                    <div class="mt-4 h-1 w-full bg-gray-700 rounded-full overflow-hidden">
+                        <div class="h-full w-1/4 bg-gradient-to-r from-[#EFC46E] to-[#EAA221] rounded-full"></div>
+                    </div>
+                    <p class="text-xs text-gray-400 mt-2">25% claimed</p>
+                    <a href="rewards.html" class="inline-block mt-4 px-6 py-2 bg-gradient-to-r from-[#EFC46E] to-[#EAA221] text-black rounded-full font-bold text-sm">
+                        Redeem Now
+                    </a>
+                </div>
+            </div>
+
+            <div class="text-center mt-10">
+                <a href="rewards.html" class="inline-block px-8 py-3 border-2 border-[#EAA221] text-[#EAA221] rounded-full font-bold hover:bg-[#EAA221] hover:text-black transition">
+                    View All Rewards <i class="bi bi-arrow-right ml-1"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ============================================
+    LEADERBOARD (Replaces Testimonials)
+    ============================================ -->
+    <section id="leaderboard" class="py-16 md:py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-[#001E82] font-york text-center mb-4">
+                🏆 Top Earners
+            </h2>
+            <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+                Meet our top users who have earned the most rewards
+            </p>
+
+            <div class="max-w-2xl mx-auto space-y-4">
+                <!-- Rank 1 -->
+                <div class="flex items-center gap-4 p-4 bg-gradient-to-r from-[#FFD200]/20 to-transparent rounded-xl border border-[#FFD200]/30">
+                    <div class="w-12 h-12 rounded-full bg-[#FFD200] flex items-center justify-center text-2xl font-bold text-[#001E82]">
+                        1
+                    </div>
+                    <div class="flex-1">
+                        <p class="font-bold">Priya Sharma</p>
+                        <p class="text-sm text-gray-500">1,247 points earned</p>
+                    </div>
+                    <div class="text-right">
+                        <p class="font-bold text-[#EAA221]">₹2,500</p>
+                        <p class="text-xs text-gray-400">Rewards claimed</p>
+                    </div>
+                </div>
+
+                <!-- Rank 2 -->
+                <div class="flex items-center gap-4 p-4 bg-gray-50 rounded-xl">
+                    <div class="w-12 h-12 rounded-full bg-gray-300 flex items-center justify-center text-2xl font-bold text-gray-600">
+                        2
+                    </div>
+                    <div class="flex-1">
+                        <p class="font-bold">Rahul Singh</p>
+                        <p class="text-sm text-gray-500">1,102 points earned</p>
+                    </div>
+                    <div class="text-right">
+                        <p class="font-bold text-[#EAA221]">₹1,800</p>
+                        <p class="text-xs text-gray-400">Rewards claimed</p>
+                    </div>
+                </div>
+
+                <!-- Rank 3 -->
+                <div class="flex items-center gap-4 p-4 bg-gray-50 rounded-xl">
+                    <div class="w-12 h-12 rounded-full bg-[#b31602]/20 flex items-center justify-center text-2xl font-bold text-[#b31602]">
+                        3
+                    </div>
+                    <div class="flex-1">
+                        <p class="font-bold">Aisha Khan</p>
+                        <p class="text-sm text-gray-500">987 points earned</p>
+                    </div>
+                    <div class="text-right">
+                        <p class="font-bold text-[#EAA221]">₹1,200</p>
+                        <p class="text-xs text-gray-400">Rewards claimed</p>
+                    </div>
+                </div>
+
+                <!-- Rank 4 -->
+                <div class="flex items-center gap-4 p-4 bg-gray-50 rounded-xl">
+                    <div class="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center text-2xl font-bold text-gray-500">
+                        4
+                    </div>
+                    <div class="flex-1">
+                        <p class="font-bold">Vikram Patel</p>
+                        <p class="text-sm text-gray-500">876 points earned</p>
+                    </div>
+                    <div class="text-right">
+                        <p class="font-bold text-[#EAA221]">₹950</p>
+                        <p class="text-xs text-gray-400">Rewards claimed</p>
+                    </div>
+                </div>
+
+                <!-- Rank 5 -->
+                <div class="flex items-center gap-4 p-4 bg-gray-50 rounded-xl">
+                    <div class="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center text-2xl font-bold text-gray-500">
+                        5
+                    </div>
+                    <div class="flex-1">
+                        <p class="font-bold">Neha Gupta</p>
+                        <p class="text-sm text-gray-500">765 points earned</p>
+                    </div>
+                    <div class="text-right">
+                        <p class="font-bold text-[#EAA221]">₹700</p>
+                        <p class="text-xs text-gray-400">Rewards claimed</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-8">
+                <p class="text-sm text-gray-400">Join now and compete for the top spot! 🚀</p>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ============================================
+    TESTIMONIALS
+    ============================================ -->
+    <section id="testimonials" class="py-16 md:py-20 bg-[#f8f9fa]">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-[#001E82] font-york text-center mb-12">
+                What Our Users Say
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card bg-white rounded-xl p-6 shadow-sm">
+                    <div class="flex items-start gap-4">
+                        <img src="https://picsum.photos/100/100?random=20" alt="User" class="w-16 h-16 rounded-xl object-cover" />
+                        <div>
+                            <p class="font-bold text-[#001E82]">Priya Sharma</p>
+                            <p class="text-xs text-gray-500">⭐ 4.8 rating</p>
+                        </div>
+                    </div>
+                    <p class="mt-4 text-gray-700 text-sm leading-relaxed">
+                        "This platform is amazing! I've earned over ₹2,500 just by completing simple tasks. Highly recommend!"
+                    </p>
+                    <div class="mt-3 flex text-[#EAA221]">
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card bg-white rounded-xl p-6 shadow-sm">
+                    <div class="flex items-start gap-4">
+                        <img src="https://picsum.photos/100/100?random=21" alt="User" class="w-16 h-16 rounded-xl object-cover" />
+                        <div>
+                            <p class="font-bold text-[#001E82]">Rahul Singh</p>
+                            <p class="text-xs text-gray-500">⭐ 4.9 rating</p>
+                        </div>
+                    </div>
+                    <p class="mt-4 text-gray-700 text-sm leading-relaxed">
+                        "I love the variety of challenges. The referral program helped me earn extra points. Great community!"
+                    </p>
+                    <div class="mt-3 flex text-[#EAA221]">
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card bg-white rounded-xl p-6 shadow-sm">
+                    <div class="flex items-start gap-4">
+                        <img src="https://picsum.photos/100/100?random=22" alt="User" class="w-16 h-16 rounded-xl object-cover" />
+                        <div>
+                            <p class="font-bold text-[#001E82]">Aisha Khan</p>
+                            <p class="text-xs text-gray-500">⭐ 4.7 rating</p>
+                        </div>
+                    </div>
+                    <p class="mt-4 text-gray-700 text-sm leading-relaxed">
+                        "The rewards are genuine and the payout is quick. I've redeemed Amazon vouchers and cashback multiple times."
+                    </p>
+                    <div class="mt-3 flex text-[#EAA221]">
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ============================================
+    FOOTER
+    ============================================ -->
+    <footer class="bg-[#212529] text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Brand -->
+                <div>
+                    <div class="flex items-center gap-2 mb-4">
+                        <img src="images/logo.png" alt="UniRewards" class="h-10 w-auto" />
+                        <span class="text-xl font-bold font-york">UniRewards</span>
+                    </div>
+                    <p class="text-gray-400 text-sm">Earn rewards by completing challenges.</p>
+                    <div class="flex gap-3 mt-4">
+                        <a href="#" class="social-icon w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-icon w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-icon w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="font-bold mb-4 text-[#FFD200]">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li><a href="#challenges" class="hover:text-white transition">Challenges</a></li>
+                        <li><a href="#rewards" class="hover:text-white transition">Rewards</a></li>
+                        <li><a href="#leaderboard" class="hover:text-white transition">Leaderboard</a></li>
+                        <li><a href="#" class="hover:text-white transition">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <!-- Support -->
+                <div>
+                    <h4 class="font-bold mb-4 text-[#FFD200]">Support</h4>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li><a href="#" class="hover:text-white transition">Contact Us</a></li>
+                        <li><a href="#" class="hover:text-white transition">Terms & Conditions</a></li>
+                        <li><a href="#" class="hover:text-white transition">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-white transition">Help Center</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h4 class="font-bold mb-4 text-[#FFD200]">Contact</h4>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li><i class="bi bi-envelope mr-2"></i> support@unirewards.com</li>
+                        <li><i class="bi bi-phone mr-2"></i> +91 7709139927</li>
+                        <li><i class="bi bi-clock mr-2"></i> Mon-Fri: 10am - 6:30pm</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-white/10 mt-8 pt-6 text-center text-sm text-gray-400">
+                <p>&copy; 2026 UniRewards. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- ============================================
+    BACK TO TOP
+    ============================================ -->
+    <button class="back-to-top fixed bottom-6 right-6 w-12 h-12 rounded-full bg-[#b31602] text-white shadow-lg flex items-center justify-center hover:bg-[#8a1100] transition z-50 hidden">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+
+    <!-- ============================================
+    SCRIPTS
+    ============================================ -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script src="src/js/script.js"></script>
+
+    <script>
+        // Initialize Slick for Challenges
+        $('.challenges-slider').slick({
+            dots: true,
+            arrows: false,
+            infinite: true,
+            speed: 500,
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 4000,
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1
+                    }
+                },
+                {
+                    breakpoint: 768,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }
+            ]
+        });
+    </script>
+
+</body>
+</html>

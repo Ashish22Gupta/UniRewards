@@ -1,0 +1,468 @@
+// ============================================
+// VARIABLES
+// ============================================
+$primary-blue: #001E82;
+$secondary-blue: #0c31AC;
+$gold: #EAA221;
+$gold-light: #EFC46E;
+$red: #b31602;
+$green: #79B619;
+$dark: #212529;
+$light: #f8f9fa;
+$white: #ffffff;
+$purple: #3C0032;
+
+$font-york: 'York Grot', 'Inter', sans-serif;
+$font-inter: 'Inter', sans-serif;
+
+// ============================================
+// MIXINS
+// ============================================
+@mixin gradient-text($from, $to) {
+    background: linear-gradient(180deg, $from 20%, $to 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+@mixin card-shadow {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+@mixin transition($property: all, $duration: 0.3s, $ease: ease) {
+    transition: $property $duration $ease;
+}
+
+// ============================================
+// BASE
+// ============================================
+body {
+    font-family: $font-inter;
+    color: $dark;
+    scroll-behavior: smooth;
+}
+
+.font-york {
+    font-family: $font-york;
+}
+
+// ============================================
+// NAVBAR
+// ============================================
+.navbar-main {
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+
+    .nav-link {
+        position: relative;
+        padding-bottom: 2px;
+        @include transition;
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: $primary-blue;
+            @include transition;
+        }
+
+        &:hover::after {
+            width: 100%;
+        }
+    }
+}
+
+// Hamburger Animation
+.hamburger {
+    span {
+        @include transition;
+    }
+
+    &.active {
+        span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        span:nth-child(2) {
+            opacity: 0;
+            transform: scale(0);
+        }
+        span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+    }
+}
+
+// ============================================
+// BUTTONS
+// ============================================
+.btn-primary {
+    background: $primary-blue;
+    color: $white;
+    @include transition;
+
+    &:hover {
+        background: $secondary-blue;
+        color: $white;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba($primary-blue, 0.3);
+    }
+}
+
+.btn-hero {
+    background: linear-gradient(135deg, $gold-light, $gold);
+    color: $dark;
+    @include transition;
+
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 25px rgba($gold, 0.4);
+        color: $dark;
+    }
+}
+
+// ============================================
+// HERO SECTION
+// ============================================
+.hero-section {
+    background: linear-gradient(135deg, rgba($primary-blue, 0.95), rgba($secondary-blue, 0.85)),
+                url('../images/hero-bg.jpg') center/cover no-repeat;
+    min-height: 100vh;
+    position: relative;
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 100px;
+        background: linear-gradient(to top, $white, transparent);
+    }
+}
+
+// ============================================
+// FORM ELEMENTS
+// ============================================
+.form-input {
+    padding: 12px 16px;
+    border: 2px solid #e5e7eb;
+    border-radius: 10px;
+    @include transition;
+
+    &:focus {
+        border-color: $primary-blue;
+        outline: none;
+        box-shadow: 0 0 0 4px rgba($primary-blue, 0.1);
+    }
+}
+
+.form-select {
+    padding: 12px 16px;
+    border: 2px solid #e5e7eb;
+    border-radius: 10px;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b7280' stroke-width='2' fill='none'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+
+    &:focus {
+        border-color: $primary-blue;
+        outline: none;
+        box-shadow: 0 0 0 4px rgba($primary-blue, 0.1);
+    }
+}
+
+.form-label {
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: $dark;
+    margin-bottom: 4px;
+    display: block;
+}
+
+// Floating Label
+.floating-input {
+    position: relative;
+
+    .form-input {
+        padding-top: 20px;
+        padding-bottom: 8px;
+    }
+
+    .floating-label {
+        position: absolute;
+        left: 16px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #9ca3af;
+        @include transition;
+        pointer-events: none;
+        font-size: 0.9rem;
+        background: transparent;
+        padding: 0 4px;
+    }
+
+    .form-input:focus + .floating-label,
+    .form-input:not(:placeholder-shown) + .floating-label {
+        top: 8px;
+        transform: translateY(0);
+        font-size: 0.7rem;
+        color: $primary-blue;
+        background: $white;
+    }
+}
+
+// ============================================
+// OTP INPUT
+// ============================================
+.otp-input {
+    @include transition;
+
+    &:focus {
+        border-color: $primary-blue;
+        box-shadow: 0 0 0 4px rgba($primary-blue, 0.1);
+    }
+}
+
+// ============================================
+// CARDS
+// ============================================
+.usp-card {
+    @include transition;
+
+    &:hover {
+        transform: translateY(-4px);
+    }
+}
+
+.ranking-card {
+    @include transition;
+
+    &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    }
+}
+
+.course-card {
+    @include transition;
+
+    &:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+    }
+}
+
+.reward-card {
+    @include transition;
+
+    &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 30px rgba($gold, 0.15);
+    }
+}
+
+.testimonial-card {
+    @include transition;
+
+    &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    }
+}
+
+// ============================================
+// STICKER CARDS
+// ============================================
+.sticker-card {
+    @include transition;
+
+    &:hover {
+        transform: scale(1.05);
+    }
+}
+
+// ============================================
+// SCRATCH CARDS
+// ============================================
+.scratch-card {
+    @include transition;
+
+    &:hover {
+        transform: translateY(-4px) scale(1.02);
+    }
+
+    &:active {
+        transform: scale(0.95);
+    }
+}
+
+// ============================================
+// UPLOAD ZONE
+// ============================================
+.upload-zone {
+    @include transition;
+
+    &:hover {
+        border-color: $primary-blue;
+        background: rgba($primary-blue, 0.02);
+    }
+
+    &.drag-over {
+        border-color: $primary-blue;
+        background: rgba($primary-blue, 0.05);
+    }
+}
+
+// ============================================
+// SIDEBAR
+// ============================================
+.sidebar {
+    @include transition(transform, 0.3s, cubic-bezier(0.4, 0, 0.2, 1));
+
+    &::-webkit-scrollbar {
+        width: 4px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: rgba($primary-blue, 0.3);
+        border-radius: 4px;
+    }
+}
+
+// ============================================
+// FORM STEPS
+// ============================================
+.form-step {
+    animation: fadeIn 0.4s ease;
+
+    &.active {
+        // display: block;
+        display: grid;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+// ============================================
+// PROGRESS BAR
+// ============================================
+.progress-step {
+    @include transition;
+
+    &.active .progress-fill {
+        width: 100%;
+    }
+}
+
+// ============================================
+// BACK TO TOP
+// ============================================
+.back-to-top {
+    @include transition;
+
+    &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 25px rgba($red, 0.3);
+    }
+
+    &.visible {
+        display: flex !important;
+    }
+}
+
+// ============================================
+// RESPONSIVE
+// ============================================
+@media (max-width: 768px) {
+    .hero-section {
+        min-height: auto;
+        padding: 80px 0 60px;
+    }
+
+    .form-card {
+        padding: 24px !important;
+    }
+
+    .otp-container {
+        gap: 8px;
+    }
+
+    .otp-input {
+        width: 40px;
+        height: 48px;
+        font-size: 1rem;
+    }
+
+    .sidebar {
+        width: 85%;
+    }
+}
+
+@media (max-width: 480px) {
+    .otp-input {
+        width: 36px;
+        height: 42px;
+        font-size: 0.9rem;
+    }
+
+    .reward-card {
+        padding: 16px;
+    }
+}
+
+// ============================================
+// ANIMATIONS
+// ============================================
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.animate-pulse-slow {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+.shimmer {
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+}
+
+// ============================================
+// UTILITY
+// ============================================
+.text-gradient-gold {
+    @include gradient-text($gold-light, $gold);
+}
+
+.text-gradient-blue {
+    @include gradient-text($primary-blue, $secondary-blue);
+}
+
+.bg-gradient-gold {
+    background: linear-gradient(135deg, $gold-light, $gold);
+}
+
+.bg-gradient-blue {
+    background: linear-gradient(135deg, $primary-blue, $secondary-blue);
+}

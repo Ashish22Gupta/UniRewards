@@ -4,32 +4,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Join UniRewards</title>
-
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet" />
-
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet" />
-
     <link href="src/css/style.css" rel="stylesheet" />
-
     <style>
         .font-inter { font-family: 'Inter', sans-serif; }
         .font-york { font-family: 'York Grot', 'Inter', sans-serif; }
     </style>
 </head>
 <body>
-
-    <!-- Header -->
     <header class="bg-gradient-to-r from-[#001E82] to-[#0c31AC] py-4">
         <div class="container mx-auto px-4">
             <div class="flex items-center justify-between">
                 <a href="index.html" class="flex items-center gap-2">
-                    <img src="images/logo.png" alt="UniRewards" class="h-10 w-auto" />
-                    <span class="text-white font-bold text-xl font-york">UniRewards</span>
+                    <img src="./src/images/logo.png" alt="UniRewards" class="h-10 w-auto" />
+                    <span class="text-white font-bold text-xl font-york hidden md:inline">UniRewards</span>
                 </a>
                 <a href="index.html" class="text-white/80 hover:text-white text-sm">
                     <i class="bi bi-house"></i> Home
@@ -39,12 +29,10 @@
     </header>
 
 
-    <!-- Registration Form -->
     <section class="min-h-screen py-12 bg-[#f8f9fa]">
         <div class="container mx-auto px-4 max-w-2xl">
             <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
 
-                <!-- Progress -->
                 <div class="bg-gradient-to-r from-[#001E82] to-[#0c31AC] p-6 text-white">
                     <h1 class="text-2xl font-bold font-york">Create Your Account</h1>
                     <p class="text-sm opacity-80">Complete all steps to start earning rewards</p>
@@ -65,200 +53,93 @@
                     <p class="text-xs mt-2 opacity-70">Step 1 of 4: Personal Details</p>
                 </div>
 
-                <form id="registerForm" class="p-6 md:p-8 space-y-6">
-
-                    <!-- STEP 1: Personal Details -->
-                    <div class="form-step active grid gap-4" data-step="1">
-                        <h3 class="text-lg font-bold text-[#001E82] font-york">
-                            <i class="bi bi-person-circle mr-2"></i> Personal Details
-                        </h3>
-
+            <form id="registerForm" class="p-6 md:p-8 space-y-6">
+                <div class="form-step active" data-step="1">
+                    <h3 class="text-xl font-bold text-[#001E82] mb-4">Personal Details</h3>
+                    <div class="space-y-4">
                         <div class="floating-input">
-                            <input type="text" class="form-input w-full" placeholder=" " id="fullName" required />
-                            <label for="fullName" class="floating-label">Full Name <span class="text-red-500">*</span></label>
+                            <input type="text" id="fullName" class="form-input w-full" placeholder=" " required>
+                            <label for="fullName" class="floating-label">Full Name *</label>
                         </div>
-
                         <div class="floating-input">
-                            <input type="email" class="form-input w-full" placeholder=" " id="email" required />
-                            <label for="email" class="floating-label">Email Address <span class="text-red-500">*</span></label>
+                            <input type="email" id="email" class="form-input w-full" placeholder=" " required>
+                            <label for="email" class="floating-label">Email Address *</label>
                         </div>
-
                         <div class="floating-input">
-                            <input type="tel" class="form-input w-full" placeholder=" " id="phone" required pattern="[6-9]\d{9}" maxlength="10" />
-                            <label for="phone" class="floating-label">Phone Number <span class="text-red-500">*</span></label>
-                        </div>
-
-                        <div>
-                            <label class="form-label">How did you hear about us? <span class="text-red-500">*</span></label>
-                            <select class="form-select w-full" required>
-                                <option value="" disabled selected>Please select</option>
-                                <option>Social Media</option>
-                                <option>Friend Referral</option>
-                                <option>Google Search</option>
-                                <option>Advertisement</option>
-                                <option>Other</option>
-                            </select>
-                        </div>
-
-                        <button type="button" class="btn-next w-full py-3 bg-[#001E82] text-white rounded-xl font-bold hover:bg-[#0c31AC] transition">
-                            Next <i class="bi bi-arrow-right ml-1"></i>
-                        </button>
-                    </div>
-
-
-                    <!-- STEP 2: Interests -->
-                    <div class="form-step hidden" data-step="2">
-                        <h3 class="text-lg font-bold text-[#001E82] font-york mb-4">
-                            <i class="bi bi-heart mr-2"></i> Your Interests
-                        </h3>
-
-                        <p class="text-sm text-gray-600 mb-4">Select the types of challenges you're interested in</p>
-
-                        <div class="space-y-3">
-                            <label class="flex items-center gap-3 p-3 border rounded-xl cursor-pointer hover:bg-gray-50 transition">
-                                <input type="checkbox" class="w-4 h-4 accent-[#001E82]" checked />
-                                <span class="text-sm">🎮 Gaming Challenges</span>
-                            </label>
-                            <label class="flex items-center gap-3 p-3 border rounded-xl cursor-pointer hover:bg-gray-50 transition">
-                                <input type="checkbox" class="w-4 h-4 accent-[#001E82]" />
-                                <span class="text-sm">📝 Product Reviews</span>
-                            </label>
-                            <label class="flex items-center gap-3 p-3 border rounded-xl cursor-pointer hover:bg-gray-50 transition">
-                                <input type="checkbox" class="w-4 h-4 accent-[#001E82]" />
-                                <span class="text-sm">📱 Social Media Tasks</span>
-                            </label>
-                            <label class="flex items-center gap-3 p-3 border rounded-xl cursor-pointer hover:bg-gray-50 transition">
-                                <input type="checkbox" class="w-4 h-4 accent-[#001E82]" />
-                                <span class="text-sm">👥 Referral Programs</span>
-                            </label>
-                            <label class="flex items-center gap-3 p-3 border rounded-xl cursor-pointer hover:bg-gray-50 transition">
-                                <input type="checkbox" class="w-4 h-4 accent-[#001E82]" />
-                                <span class="text-sm">📊 Surveys & Feedback</span>
-                            </label>
-                        </div>
-
-                        <div class="flex gap-3 mt-6">
-                            <button type="button" class="btn-prev flex-1 py-3 border-2 border-[#001E82] text-[#001E82] rounded-xl font-bold hover:bg-[#001E82]/5 transition">
-                                <i class="bi bi-arrow-left mr-1"></i> Back
-                            </button>
-                            <button type="button" class="btn-next flex-1 py-3 bg-[#001E82] text-white rounded-xl font-bold hover:bg-[#0c31AC] transition">
-                                Next <i class="bi bi-arrow-right ml-1"></i>
-                            </button>
+                            <input type="tel" id="phone" class="form-input w-full" placeholder=" " required>
+                            <label for="phone" class="floating-label">Phone Number *</label>
                         </div>
                     </div>
-
-
-                    <!-- STEP 3: Quick Quiz -->
-                    <div class="form-step hidden" data-step="3">
-                        <h3 class="text-lg font-bold text-[#001E82] font-york mb-4">
-                            <i class="bi bi-stars mr-2"></i> Quick Quiz
-                        </h3>
-                        <p class="text-sm text-gray-600 mb-4">Answer correctly to earn bonus points! 🎁</p>
-
-                        <div class="quiz-box border border-gray-200 rounded-xl p-4">
-                            <p class="font-bold text-sm mb-3">
-                                What is the easiest way to earn points?
-                            </p>
-
-                            <label class="quiz-option flex items-center gap-3 p-3 rounded-lg cursor-pointer hover:bg-gray-50 transition">
-                                <input type="radio" name="quiz" value="a" class="w-4 h-4 accent-[#001E82]" />
-                                <span class="text-sm">Complete daily check-ins</span>
-                            </label>
-
-                            <label class="quiz-option flex items-center gap-3 p-3 rounded-lg cursor-pointer hover:bg-gray-50 transition">
-                                <input type="radio" name="quiz" value="b" class="w-4 h-4 accent-[#001E82]" />
-                                <span class="text-sm">Refer friends</span>
-                            </label>
-
-                            <label class="quiz-option flex items-center gap-3 p-3 rounded-lg cursor-pointer hover:bg-gray-50 transition">
-                                <input type="radio" name="quiz" value="c" class="w-4 h-4 accent-[#001E82]" />
-                                <span class="text-sm">Complete surveys</span>
-                            </label>
-
-                            <label class="quiz-option flex items-center gap-3 p-3 rounded-lg cursor-pointer hover:bg-gray-50 transition">
-                                <input type="radio" name="quiz" value="d" class="w-4 h-4 accent-[#001E82]" />
-                                <span class="text-sm">All of the above</span>
-                            </label>
-                        </div>
-
-                        <div class="flex gap-3 mt-6">
-                            <button type="button" class="btn-prev flex-1 py-3 border-2 border-[#001E82] text-[#001E82] rounded-xl font-bold hover:bg-[#001E82]/5 transition">
-                                <i class="bi bi-arrow-left mr-1"></i> Back
-                            </button>
-                            <button type="button" class="btn-next flex-1 py-3 bg-[#001E82] text-white rounded-xl font-bold hover:bg-[#0c31AC] transition">
-                                Next <i class="bi bi-arrow-right ml-1"></i>
-                            </button>
-                        </div>
-                    </div>
-
-
-                    <!-- STEP 4: Verification -->
-                    <div class="form-step hidden" data-step="4">
-                        <h3 class="text-lg font-bold text-[#001E82] font-york mb-4">
-                            <i class="bi bi-shield-check mr-2"></i> Verify Your Account
-                        </h3>
-
-                        <!-- OTP -->
-                        <div class="mb-6">
-                            <label class="form-label">Enter OTP <span class="text-red-500">*</span></label>
-                            <div class="otp-container flex gap-3 justify-center mt-2">
-                                <input type="text" class="otp-input w-12 h-14 text-center text-xl font-bold border-2 border-gray-300 rounded-xl focus:border-[#001E82] focus:outline-none" maxlength="1" />
-                                <input type="text" class="otp-input w-12 h-14 text-center text-xl font-bold border-2 border-gray-300 rounded-xl focus:border-[#001E82] focus:outline-none" maxlength="1" />
-                                <input type="text" class="otp-input w-12 h-14 text-center text-xl font-bold border-2 border-gray-300 rounded-xl focus:border-[#001E82] focus:outline-none" maxlength="1" />
-                                <input type="text" class="otp-input w-12 h-14 text-center text-xl font-bold border-2 border-gray-300 rounded-xl focus:border-[#001E82] focus:outline-none" maxlength="1" />
-                                <input type="text" class="otp-input w-12 h-14 text-center text-xl font-bold border-2 border-gray-300 rounded-xl focus:border-[#001E82] focus:outline-none" maxlength="1" />
-                                <input type="text" class="otp-input w-12 h-14 text-center text-xl font-bold border-2 border-gray-300 rounded-xl focus:border-[#001E82] focus:outline-none" maxlength="1" />
-                            </div>
-                            <div class="flex justify-between mt-3">
-                                <span class="text-sm text-gray-500">Didn't receive OTP? <a href="#" class="text-[#001E82] font-semibold">Resend</a></span>
-                                <span class="text-sm text-gray-500" id="timer">00:60</span>
-                            </div>
-                        </div>
-
-                        <!-- Age Verification -->
-                        <div class="flex items-start gap-3 mb-4">
-                            <input type="checkbox" id="ageCheck" class="mt-1 w-4 h-4 accent-[#001E82]" required />
-                            <label for="ageCheck" class="text-sm text-gray-600">
-                                I confirm that I am above 18 years of age.
-                            </label>
-                        </div>
-
-                        <!-- Terms -->
-                        <div class="flex items-start gap-3">
-                            <input type="checkbox" id="termsCheck" class="mt-1 w-4 h-4 accent-[#001E82]" required />
-                            <label for="termsCheck" class="text-sm text-gray-600">
-                                I agree to the <a href="#" class="text-[#001E82] underline">Terms & Conditions</a>.
-                            </label>
-                        </div>
-
-                        <div class="flex gap-3 mt-6">
-                            <button type="button" class="btn-prev flex-1 py-3 border-2 border-[#001E82] text-[#001E82] rounded-xl font-bold hover:bg-[#001E82]/5 transition">
-                                <i class="bi bi-arrow-left mr-1"></i> Back
-                            </button>
-                            <button type="submit" class="flex-1 py-3 bg-gradient-to-r from-[#EFC46E] to-[#EAA221] text-black rounded-xl font-bold hover:opacity-90 transition">
-                                Submit <i class="bi bi-check-circle ml-1"></i>
-                            </button>
-                        </div>
-                    </div>
-
-                </form>
-
-                <!-- Success Message -->
-                <div id="successMessage" class="hidden p-6 bg-green-50 border-t-4 border-green-500">
-                    <div class="flex items-center gap-3">
-                        <div class="w-12 h-12 rounded-full bg-green-500 flex items-center justify-center text-white text-2xl">
-                            <i class="bi bi-check-lg"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-green-700">🎉 Registration Successful!</h4>
-                            <p class="text-sm text-green-600">Welcome to UniRewards. Start earning rewards now!</p>
-                            <p class="text-xs text-green-500 mt-1">You've earned 50 bonus points for registering!</p>
-                        </div>
-                    </div>
-                    <a href="rewards.html" class="inline-block mt-4 px-6 py-2 bg-[#001E82] text-white rounded-full font-bold text-sm hover:bg-[#0c31AC] transition">
-                        Go to Dashboard <i class="bi bi-arrow-right ml-1"></i>
-                    </a>
+                    <button type="button" class="btn-next btn-primary w-full py-3 mt-6 rounded-lg">Next</button>
                 </div>
+
+                <div class="form-step hidden" data-step="2">
+                    <h3 class="text-xl font-bold text-[#001E82] mb-4">Your Interests</h3>
+                    <p class="text-gray-600 mb-4">Select the types of challenges you're interested in</p>
+                    <div class="grid grid-cols-2 gap-3">
+                        <label class="quiz-option p-3 border-2 rounded-lg cursor-pointer text-center">🎮 Gaming</label>
+                        <label class="quiz-option p-3 border-2 rounded-lg cursor-pointer text-center">📝 Reviews</label>
+                    </div>
+                    <div class="flex gap-3 mt-6">
+                        <button type="button" class="btn-prev btn-secondary flex-1 py-3 rounded-lg">Back</button>
+                        <button type="button" class="btn-next btn-primary flex-1 py-3 rounded-lg">Next</button>
+                    </div>
+                </div>
+
+                <div class="form-step hidden" data-step="3">
+                    <h3 class="text-xl font-bold text-[#001E82] mb-4">Quick Quiz</h3>
+                    <p class="text-gray-600 mb-4">What is the easiest way to earn points?</p>
+                    <div class="space-y-3">
+                        <label class="quiz-option p-3 border-2 rounded-lg cursor-pointer block">
+                            <input type="radio" name="quiz" class="hidden"> Complete daily check-ins
+                        </label>
+                        <label class="quiz-option p-3 border-2 rounded-lg cursor-pointer block">
+                            <input type="radio" name="quiz" class="hidden"> All of the above
+                        </label>
+                    </div>
+                    <div class="flex gap-3 mt-6">
+                        <button type="button" class="btn-prev btn-secondary flex-1 py-3 rounded-lg">Back</button>
+                        <button type="button" class="btn-next btn-primary flex-1 py-3 rounded-lg">Next</button>
+                    </div>
+                </div>
+
+                <div class="form-step hidden" data-step="4">
+                    <h3 class="text-xl font-bold text-[#001E82] mb-4">Verify Your Account</h3>
+                    <p class="text-gray-600 mb-4">Enter OTP sent to your phone</p>
+                    
+                    <div class="flex items-center justify-between mb-2">
+                        <label class="form-label">Enter OTP *</label>
+                        <span>Didn't receive OTP? <button type="button" id="resendOtpReg" class="text-[#001E82] font-semibold">Resend (<span id="otpTimerRegister">01:00</span>)</button></span>
+                    </div>
+                    <div class="flex gap-2 justify-center mb-6 otp-container">
+                        <input type="text" maxlength="1" class="otp-input w-12 h-14 text-center text-xl border-2 rounded-lg" required>
+                        <input type="text" maxlength="1" class="otp-input w-12 h-14 text-center text-xl border-2 rounded-lg" required>
+                        <input type="text" maxlength="1" class="otp-input w-12 h-14 text-center text-xl border-2 rounded-lg" required>
+                        <input type="text" maxlength="1" class="otp-input w-12 h-14 text-center text-xl border-2 rounded-lg" required>
+                    </div>
+
+                    <label class="flex items-center gap-2 mb-4">
+                        <input type="checkbox" required class="w-4 h-4 text-[#001E82]">
+                        <span class="text-sm">I confirm that I am above 18 years of age.</span>
+                    </label>
+                    <label class="flex items-center gap-2 mb-6">
+                        <input type="checkbox" required class="w-4 h-4 text-[#001E82]">
+                        <span class="text-sm">I agree to the <a href="#" class="text-[#001E82] underline">Terms & Conditions</a>.</span>
+                    </label>
+
+                    <div class="flex gap-3">
+                        <button type="button" class="btn-prev btn-secondary flex-1 py-3 rounded-lg">Back</button>
+                        <button type="submit" class="btn-primary flex-1 py-3 rounded-lg">Submit</button>
+                    </div>
+                </div>
+            </form>
+
+            <div id="successMessage" class="hidden text-center p-8 bg-green-50 rounded-2xl border-2 border-green-200">
+                <div class="text-5xl mb-4">🎉</div>
+                <h3 class="text-2xl font-bold text-green-700 mb-2">Registration Successful!</h3>
+                <p class="text-gray-600 mb-4">Welcome to UniRewards. You've earned 50 bonus points!</p>
+                <a href="rewards.html" class="btn-primary inline-block px-6 py-3 rounded-lg">Go to Dashboard</a>
+            </div>
 
             </div>
         </div>
@@ -268,7 +149,6 @@
     <script src="src/js/script.js"></script>
 
     <script>
-        // OTP Auto-advance
         document.querySelectorAll('.otp-input').forEach((input, index, inputs) => {
             input.addEventListener('input', (e) => {
                 if (e.target.value.length === 1 && index < inputs.length - 1) {
@@ -287,7 +167,6 @@
             });
         });
 
-        // Timer
         let timeLeft = 60;
         const timerEl = document.getElementById('timer');
         const timerInterval = setInterval(() => {

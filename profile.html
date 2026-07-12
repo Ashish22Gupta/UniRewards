@@ -4,35 +4,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Profile - UniRewards</title>
-
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet" />
-
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet" />
-
-    <!-- Custom CSS -->
     <link href="src/css/style.css" rel="stylesheet" />
-
     <style>
         .font-inter { font-family: 'Inter', sans-serif; }
         .font-york { font-family: 'York Grot', 'Inter', sans-serif; }
     </style>
 </head>
 <body>
-
-    <!-- ============================================
-    HEADER
-    ============================================ -->
     <header class="bg-gradient-to-r from-[#001E82] to-[#0c31AC] py-4">
         <div class="container mx-auto px-4">
             <div class="flex items-center justify-between">
                 <a href="index.html" class="flex items-center gap-2">
-                    <img src="images/logo.png" alt="UniRewards" class="h-10 w-auto" />
-                    <span class="text-white font-bold text-xl font-york">UniRewards</span>
+                    <img src="./src/images/logo.png" alt="UniRewards" class="h-10 w-auto" />
+                    <span class="text-white font-bold text-xl font-york hidden md:inline">UniRewards</span>
                 </a>
                 <a href="rewards.html" class="text-white/80 hover:text-white text-sm">
                     <i class="bi bi-arrow-left"></i> Back to Dashboard
@@ -41,13 +28,7 @@
         </div>
     </header>
 
-
-    <!-- ============================================
-    PROFILE CONTENT
-    ============================================ -->
     <main class="container mx-auto px-4 py-8 max-w-2xl">
-
-        <!-- Profile Header -->
         <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-6 text-center">
             <div class="w-24 h-24 rounded-full bg-[#001E82]/10 flex items-center justify-center text-4xl text-[#001E82] mx-auto">
                 <i class="bi bi-person-circle"></i>
@@ -59,9 +40,6 @@
                 <span class="px-3 py-1 bg-yellow-100 text-yellow-700 rounded-full text-xs font-semibold">⭐ 500 Points</span>
             </div>
         </div>
-
-
-        <!-- Verification Status -->
         <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-6">
             <h3 class="font-bold text-[#001E82] mb-4">
                 <i class="bi bi-shield-check mr-2"></i> Verification Status
@@ -85,138 +63,79 @@
                 </div>
             </div>
         </div>
-
-
-        <!-- ============================================
-        KYC SECTION (Rockford style)
-        ============================================ -->
         <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
             <h3 class="font-bold text-[#001E82] mb-4">
                 <i class="bi bi-id-card mr-2"></i> Complete Your KYC
             </h3>
             <p class="text-sm text-gray-500 mb-4">Upload your documents to unlock all rewards</p>
 
-            <form id="kycForm" class="space-y-4">
-
-                <!-- Name -->
+            <form id="kycForm" class="space-y-6">
                 <div class="floating-input">
-                    <input type="text" class="form-input w-full" placeholder=" " id="kycName" value="John Doe" />
-                    <label for="kycName" class="floating-label">Full Name (as per PAN/Aadhar) <span class="text-red-500">*</span></label>
+                    <input type="text" id="kycName" class="form-input w-full" placeholder=" " required>
+                    <label for="kycName" class="floating-label">Full Name (as per PAN/Aadhar) *</label>
                 </div>
 
-                <!-- Mobile with OTP -->
+                <div class="flex gap-4">
+                    <div class="floating-input flex-1">
+                        <input type="tel" id="kycPhone" class="form-input w-full" placeholder=" " required>
+                        <label for="kycPhone" class="floating-label">Mobile Number *</label>
+                    </div>
+                    <div class="flex items-center">
+                        <button type="button" id="sendKycOtp" class="btn-primary px-6 py-3 rounded-lg h-[48px]">Send OTP</button>
+                    </div>
+                </div>
+                
+                <p class="text-sm text-gray-500 text-right">Time remaining: <span id="otpTimerKYC" class="font-bold text-[#001E82]">00:45</span></p>
+
                 <div>
-                    <label class="form-label">Mobile Number <span class="text-red-500">*</span></label>
-                    <div class="relative">
-                        <input type="tel" class="form-input w-full pr-28" placeholder="9876543210" value="9876543210" />
-                        <button type="button" class="absolute right-2 top-1/2 -translate-y-1/2 px-4 py-1.5 bg-gradient-to-r from-[#EFC46E] to-[#EAA221] text-black rounded-lg text-xs font-bold">
-                            Send OTP
-                        </button>
-                    </div>
-                    <div class="flex items-center gap-3 mt-2">
-                        <div class="flex gap-2">
-                            <input type="text" class="otp-input w-10 h-10 text-center text-lg font-bold border-2 border-gray-300 rounded-lg focus:border-[#001E82] focus:outline-none" maxlength="1" />
-                            <input type="text" class="otp-input w-10 h-10 text-center text-lg font-bold border-2 border-gray-300 rounded-lg focus:border-[#001E82] focus:outline-none" maxlength="1" />
-                            <input type="text" class="otp-input w-10 h-10 text-center text-lg font-bold border-2 border-gray-300 rounded-lg focus:border-[#001E82] focus:outline-none" maxlength="1" />
-                            <input type="text" class="otp-input w-10 h-10 text-center text-lg font-bold border-2 border-gray-300 rounded-lg focus:border-[#001E82] focus:outline-none" maxlength="1" />
-                        </div>
-                        <span class="text-xs text-gray-400">00:45</span>
+                    <label class="form-label mb-2 block">Aadhar Card (Front) *</label>
+                    <div class="upload-zone border-2 border-dashed border-gray-300 rounded-xl p-6 text-center cursor-pointer bg-gray-50 hover:bg-blue-50 transition">
+                        <input type="file" class="hidden" accept=".jpg,.png,.pdf" required>
+                        <svg class="mx-auto h-10 w-10 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" /></svg>
+                        <p class="text-sm text-gray-600">Click or drag to upload</p>
+                        <p class="text-xs text-gray-400 mt-1">JPG, PNG, PDF • Max 5MB</p>
+                        <p class="file-name text-sm font-semibold text-[#001E82] mt-2 hidden"></p>
                     </div>
                 </div>
 
-                <!-- Aadhar Upload -->
                 <div>
-                    <label class="form-label">Aadhar Card (Front) <span class="text-red-500">*</span></label>
-                    <div class="upload-zone border-2 border-dashed border-gray-300 rounded-xl p-6 text-center cursor-pointer hover:border-[#001E82] transition" id="uploadAadharFront">
-                        <div class="flex flex-col items-center">
-                            <i class="bi bi-cloud-arrow-up text-3xl text-gray-400"></i>
-                            <p class="text-sm text-gray-500 mt-2">Click or drag to upload</p>
-                            <p class="text-xs text-gray-400">JPG, PNG, PDF • Max 5MB</p>
-                        </div>
-                        <input type="file" class="hidden" accept=".jpg,.jpeg,.png,.pdf" />
-                    </div>
-                    <div class="upload-success hidden mt-2 p-3 bg-green-50 rounded-lg flex items-center justify-between">
-                        <span class="text-sm text-green-700"><i class="bi bi-check-circle mr-1"></i> aadhar-front.pdf</span>
-                        <button type="button" class="text-red-400 hover:text-red-600 text-sm remove-file">
-                            <i class="bi bi-x"></i>
-                        </button>
+                    <label class="form-label mb-2 block">Aadhar Card (Back) *</label>
+                    <div class="upload-zone border-2 border-dashed border-gray-300 rounded-xl p-6 text-center cursor-pointer bg-gray-50 hover:bg-blue-50 transition">
+                        <input type="file" class="hidden" accept=".jpg,.png,.pdf" required>
+                        <svg class="mx-auto h-10 w-10 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" /></svg>
+                        <p class="text-sm text-gray-600">Click or drag to upload</p>
+                        <p class="file-name text-sm font-semibold text-[#001E82] mt-2 hidden"></p>
                     </div>
                 </div>
 
-                <!-- Aadhar Back -->
                 <div>
-                    <label class="form-label">Aadhar Card (Back) <span class="text-red-500">*</span></label>
-                    <div class="upload-zone border-2 border-dashed border-gray-300 rounded-xl p-6 text-center cursor-pointer hover:border-[#001E82] transition" id="uploadAadharBack">
-                        <div class="flex flex-col items-center">
-                            <i class="bi bi-cloud-arrow-up text-3xl text-gray-400"></i>
-                            <p class="text-sm text-gray-500 mt-2">Click or drag to upload</p>
-                            <p class="text-xs text-gray-400">JPG, PNG, PDF • Max 5MB</p>
-                        </div>
-                        <input type="file" class="hidden" accept=".jpg,.jpeg,.png,.pdf" />
-                    </div>
-                    <div class="upload-success hidden mt-2 p-3 bg-green-50 rounded-lg flex items-center justify-between">
-                        <span class="text-sm text-green-700"><i class="bi bi-check-circle mr-1"></i> aadhar-back.pdf</span>
-                        <button type="button" class="text-red-400 hover:text-red-600 text-sm remove-file">
-                            <i class="bi bi-x"></i>
-                        </button>
+                    <label class="form-label mb-2 block">PAN Card *</label>
+                    <div class="upload-zone border-2 border-dashed border-gray-300 rounded-xl p-6 text-center cursor-pointer bg-gray-50 hover:bg-blue-50 transition">
+                        <input type="file" class="hidden" accept=".jpg,.png,.pdf" required>
+                        <svg class="mx-auto h-10 w-10 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" /></svg>
+                        <p class="text-sm text-gray-600">Click or drag to upload</p>
+                        <p class="file-name text-sm font-semibold text-[#001E82] mt-2 hidden"></p>
                     </div>
                 </div>
 
-                <!-- PAN Upload -->
-                <div>
-                    <label class="form-label">PAN Card <span class="text-red-500">*</span></label>
-                    <div class="upload-zone border-2 border-dashed border-gray-300 rounded-xl p-6 text-center cursor-pointer hover:border-[#001E82] transition" id="uploadPan">
-                        <div class="flex flex-col items-center">
-                            <i class="bi bi-cloud-arrow-up text-3xl text-gray-400"></i>
-                            <p class="text-sm text-gray-500 mt-2">Click or drag to upload</p>
-                            <p class="text-xs text-gray-400">JPG, PNG, PDF • Max 5MB</p>
-                        </div>
-                        <input type="file" class="hidden" accept=".jpg,.jpeg,.png,.pdf" />
-                    </div>
-                    <div class="upload-success hidden mt-2 p-3 bg-green-50 rounded-lg flex items-center justify-between">
-                        <span class="text-sm text-green-700"><i class="bi bi-check-circle mr-1"></i> pan-card.pdf</span>
-                        <button type="button" class="text-red-400 hover:text-red-600 text-sm remove-file">
-                            <i class="bi bi-x"></i>
-                        </button>
-                    </div>
-                </div>
+                <label class="flex items-center gap-2">
+                    <input type="checkbox" required class="w-4 h-4 text-[#001E82]">
+                    <span class="text-sm">I confirm that all information provided is accurate and true.</span>
+                </label>
 
-                <!-- Terms -->
-                <div class="flex items-start gap-3">
-                    <input type="checkbox" id="kycTerms" class="mt-1 w-4 h-4 accent-[#001E82]" required />
-                    <label for="kycTerms" class="text-sm text-gray-600">
-                        I confirm that all information provided is accurate and true.
-                    </label>
-                </div>
-
-                <button type="submit" class="w-full py-3 bg-gradient-to-r from-[#EFC46E] to-[#EAA221] text-black rounded-xl font-bold hover:opacity-90 transition">
-                    Submit KYC <i class="bi bi-check-circle ml-1"></i>
-                </button>
-
+                <button type="submit" class="btn-primary w-full py-3 rounded-lg font-bold">Submit KYC</button>
             </form>
 
-            <!-- KYC Success -->
-            <div id="kycSuccess" class="hidden mt-4 p-4 bg-green-50 rounded-xl border border-green-200">
-                <div class="flex items-center gap-3">
-                    <i class="bi bi-check-circle text-green-500 text-2xl"></i>
-                    <div>
-                        <p class="font-bold text-green-700">KYC Submitted Successfully!</p>
-                        <p class="text-sm text-green-600">Your documents will be verified within 24-48 hours.</p>
-                    </div>
-                </div>
+            <div id="kycSuccess" class="hidden text-center p-8 bg-green-50 rounded-2xl border-2 border-green-200 mt-6">
+                <div class="text-5xl mb-4">✅</div>
+                <h3 class="text-2xl font-bold text-green-700 mb-2">KYC Submitted Successfully!</h3>
+                <p class="text-gray-600">Your documents will be verified within 24-48 hours.</p>
             </div>
+
         </div>
-
     </main>
-
-
-    <!-- ============================================
-    SCRIPTS
-    ============================================ -->
     <script src="src/js/script.js"></script>
-
     <script>
-        // Upload Zones
         document.querySelectorAll('.upload-zone').forEach(zone => {
             const fileInput = zone.querySelector('input[type="file"]');
             const successDiv = zone.nextElementSibling;
@@ -241,7 +160,6 @@
                         return;
                     }
 
-                    // Show success state
                     const fileNameSpan = successDiv.querySelector('span');
                     if (fileNameSpan) {
                         fileNameSpan.textContent = file.name;
@@ -252,7 +170,6 @@
                 }
             });
 
-            // Remove file
             const removeBtn = successDiv.querySelector('.remove-file');
             if (removeBtn) {
                 removeBtn.addEventListener('click', function(e) {
@@ -265,7 +182,6 @@
             }
         });
 
-        // KYC Form Submit
         document.getElementById('kycForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const success = document.getElementById('kycSuccess');

@@ -1,11 +1,5 @@
-// ============================================
-// DOM READY
-// ============================================
 document.addEventListener('DOMContentLoaded', function() {
 
-    // ============================================
-    // HAMBURGER TOGGLE
-    // ============================================
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobileMenu');
 
@@ -13,16 +7,11 @@ document.addEventListener('DOMContentLoaded', function() {
         hamburger.addEventListener('click', function() {
             this.classList.toggle('active');
             mobileMenu.classList.toggle('hidden');
-            // Toggle aria-expanded
             const expanded = this.getAttribute('aria-expanded') === 'true' || false;
             this.setAttribute('aria-expanded', !expanded);
         });
     }
 
-
-    // ============================================
-    // NAVBAR SCROLL EFFECT
-    // ============================================
     const nav = document.getElementById('mainNav');
     let lastScroll = 0;
 
@@ -41,9 +30,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
 
-    // ============================================
-    // SMOOTH SCROLL FOR NAV LINKS
-    // ============================================
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             const target = document.querySelector(this.getAttribute('href'));
@@ -57,7 +43,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     behavior: 'smooth'
                 });
 
-                // Close mobile menu if open
                 if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
                     hamburger?.click();
                 }
@@ -65,10 +50,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-
-    // ============================================
-    // BACK TO TOP
-    // ============================================
     const backToTop = document.querySelector('.back-to-top');
 
     if (backToTop) {
@@ -86,10 +67,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-
-    // ============================================
-    // SLICK CAROUSEL
-    // ============================================
     if (typeof $ !== 'undefined' && $.fn.slick) {
         $('.programs-slider').slick({
             dots: true,
@@ -119,10 +96,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-
-    // ============================================
-    // FORM STEPS (Register Page)
-    // ============================================
     const steps = document.querySelectorAll('.form-step');
     const nextBtns = document.querySelectorAll('.btn-next');
     const prevBtns = document.querySelectorAll('.btn-prev');
@@ -130,7 +103,6 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentStep = 0;
 
     function updateSteps(stepIndex) {
-        // Hide all steps
         steps.forEach((step, index) => {
             step.classList.add('hidden');
             step.classList.remove('active');
@@ -140,7 +112,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        // Update progress
         progressSteps.forEach((step, index) => {
             const fill = step.querySelector('.h-full');
             if (index <= stepIndex) {
@@ -152,7 +123,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        // Update step indicator text
         const stepIndicator = document.querySelector('.progress-header .text-xs');
         if (stepIndicator) {
             stepIndicator.textContent = `Step ${stepIndex + 1} of ${steps.length}`;
@@ -165,7 +135,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 const parentStep = this.closest('.form-step');
                 const stepIndex = parseInt(parentStep.dataset.step) - 1;
 
-                // Basic validation for current step
                 const inputs = parentStep.querySelectorAll('input[required], select[required]');
                 let valid = true;
                 inputs.forEach(input => {
@@ -200,18 +169,12 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-
-    // ============================================
-    // REGISTRATION FORM SUBMIT
-    // ============================================
     const registerForm = document.getElementById('registerForm');
     const successMessage = document.getElementById('successMessage');
 
     if (registerForm) {
         registerForm.addEventListener('submit', function(e) {
             e.preventDefault();
-
-            // Validate all required fields
             const inputs = this.querySelectorAll('input[required], select[required]');
             let valid = true;
             inputs.forEach(input => {
@@ -228,7 +191,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
 
-            // Show success
             if (successMessage) {
                 successMessage.classList.remove('hidden');
                 this.classList.add('hidden');
@@ -239,16 +201,11 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-
-    // ============================================
-    // QUIZ OPTIONS (Tata Soulfull style)
-    // ============================================
     document.querySelectorAll('.quiz-option').forEach(option => {
         option.addEventListener('click', function() {
             const radio = this.querySelector('input[type="radio"]');
             if (radio) {
                 radio.checked = true;
-                // Remove active class from siblings
                 this.parentElement.querySelectorAll('.quiz-option').forEach(opt => {
                     opt.classList.remove('bg-[#001E82]/5', 'border-[#001E82]');
                 });
@@ -257,10 +214,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-
-    // ============================================
-    // MODAL HANDLING (Reusable)
-    // ============================================
     window.openModal = function(modalId) {
         const modal = document.getElementById(modalId);
         if (modal) {
@@ -277,7 +230,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
 
-    // Close modals on outside click
     document.querySelectorAll('.modal').forEach(modal => {
         modal.addEventListener('click', function(e) {
             if (e.target === this) {
@@ -287,10 +239,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-
-    // ============================================
-    // INTERSECTION OBSERVER FOR ANIMATIONS
-    // ============================================
     if ('IntersectionObserver' in window) {
         const animateElements = document.querySelectorAll('.animate-on-scroll');
 
@@ -308,19 +256,12 @@ document.addEventListener('DOMContentLoaded', function() {
         animateElements.forEach(el => observer.observe(el));
     }
 
-
-    // ============================================
-    // KEYBOARD ACCESSIBILITY
-    // ============================================
     document.addEventListener('keydown', function(e) {
-        // Escape key closes modals
         if (e.key === 'Escape') {
             document.querySelectorAll('.modal:not(.hidden)').forEach(modal => {
                 modal.classList.add('hidden');
                 document.body.style.overflow = '';
             });
-
-            // Close sidebar on escape
             const sidebar = document.getElementById('sidebar');
             if (sidebar && !sidebar.classList.contains('-translate-x-full')) {
                 closeSidebar();
@@ -328,10 +269,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-
-    // ============================================
-    // SIDEBAR FUNCTIONS (Global)
-    // ============================================
     window.openSidebar = function() {
         const sidebar = document.getElementById('sidebar');
         const overlay = document.getElementById('sidebarOverlay');
@@ -351,12 +288,101 @@ document.addEventListener('DOMContentLoaded', function() {
             document.body.style.overflow = '';
         }
     };
+});
 
+function startOTPTimer(elementId, seconds) {
+    const el = document.getElementById(elementId);
+    if (!el) return;
+    
+    let timer = seconds;
+    el.textContent = `0${Math.floor(timer / 60)}:${String(timer % 60).padStart(2, '0')}`;
+    
+    const interval = setInterval(() => {
+        timer--;
+        const m = String(Math.floor(timer / 60)).padStart(2, '0');
+        const s = String(timer % 60).padStart(2, '0');
+        el.textContent = `${m}:${s}`;
+        
+        if (timer <= 0) {
+            clearInterval(interval);
+            el.textContent = "Resend";
+            el.classList.add('text-[#001E82]', 'font-bold', 'cursor-pointer');
+        }
+    }, 1000);
+}
 
-    // ============================================
-    // CONSOLE LOG (Welcome message)
-    // ============================================
-    console.log('🚀 UniRewards Platform v2.0');
-    console.log('📚 Built with ❤️ using Bootstrap, Tailwind, and SCSS');
-    console.log('⭐ Features: University Landing | Rewards | Gamification | KYC');
+const kycForm = document.getElementById('kycForm');
+const kycSuccess = document.getElementById('kycSuccess');
+
+if (kycForm && kycSuccess) {
+    kycForm.addEventListener('submit', function(e) {
+        e.preventDefault();      
+        kycForm.classList.add('hidden');
+        kycSuccess.classList.remove('hidden');
+        kycSuccess.scrollIntoView({ behavior: 'smooth' });
+    });
+}
+
+document.querySelectorAll('.claim-reward-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+        if (typeof openModal === 'function') {
+            openModal('congratsModal'); 
+        }
+    });
+});
+
+document.querySelectorAll('.upload-zone').forEach(zone => {
+    const input = zone.querySelector('input[type="file"]');
+    const fileNameDisplay = zone.querySelector('.file-name');
+
+    zone.addEventListener('click', () => input?.click());
+
+    ['dragover', 'dragenter'].forEach(evt => {
+        zone.addEventListener(evt, (e) => {
+            e.preventDefault();
+            zone.classList.add('drag-over');
+        });
+    });
+
+    ['dragleave', 'drop'].forEach(evt => {
+        zone.addEventListener(evt, (e) => {
+            e.preventDefault();
+            zone.classList.remove('drag-over');
+        });
+    });
+
+    zone.addEventListener('drop', (e) => {
+        const files = e.dataTransfer.files;
+        if (files.length > 0 && input) {
+            input.files = files;
+            if (fileNameDisplay) fileNameDisplay.textContent = files[0].name;
+        }
+    });
+
+    if (input) {
+        input.addEventListener('change', function() {
+            if (this.files.length > 0 && fileNameDisplay) {
+                fileNameDisplay.textContent = this.files[0].name;
+            }
+        });
+    }
+});
+
+document.querySelectorAll('.scratch-card').forEach(card => {
+    card.addEventListener('click', function() {
+        const cover = this.querySelector('.scratch-cover');
+        if (cover) {
+            cover.style.opacity = '0';
+            setTimeout(() => cover.remove(), 300);
+            this.classList.add('scratched');
+        }
+    });
+});
+
+document.getElementById('resendOtpReg')?.addEventListener('click', () => {
+    startOTPTimer('otpTimerRegister', 60);
+});
+
+document.getElementById('sendKycOtp')?.addEventListener('click', () => {
+    startOTPTimer('otpTimerKYC', 45);
 });

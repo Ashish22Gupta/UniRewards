@@ -31,22 +31,3 @@
 | **Icons** | Font Awesome / SVG |
 
 ---
-
-## 📁 Project Structure
-
-unirewards/
-│
-├── 📄 index.html              # Landing page (hero, features, challenges, rewards, testimonials)
-├── 📄 register.html           # Multi-step registration form with OTP
-├── 📄 rewards.html            # User dashboard (stickers, scratch cards, rewards)
-├── 📄 profile.html            # Profile page with KYC verification
-│
-├── 📁 css/
-│   └── style.scss             # Main SCSS stylesheet (variables, mixins, components)
-│
-├── 📁 js/
-│   └── script.js              # Main JavaScript file (all interactions)
-│
-├── 📁 images/                 # Static assets (logos, backgrounds)
-│
-└── 📄 README.md               # Project documentation

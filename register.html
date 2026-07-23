@@ -70,7 +70,7 @@
                             <label for="email" class="floating-label">Email Address *</label>
                         </div>
                         <div class="floating-input">
-                            <input type="tel" id="phone" class="form-input w-full" placeholder=" " required pattern="[6-9][0-9]{9}" maxlength="10" minlength="10">
+                            <input type="tel" id="phone" class="form-input w-full" placeholder=" " required pattern="[6-9][0-9]{9}" maxlength="10" minlength="10" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0,10);">
                             <label for="phone" class="floating-label">Phone Number *</label>
                         </div>
                     </div>

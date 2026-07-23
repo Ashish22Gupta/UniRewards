@@ -1,3 +1,59 @@
+.material-symbols-outlined {
+  font-family: "Material Symbols Outlined";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  vertical-align: middle;
+}
+.material-symbols-outlined.icon-sm {
+  font-size: 18px;
+}
+.material-symbols-outlined.icon-md {
+  font-size: 24px;
+}
+.material-symbols-outlined.icon-lg {
+  font-size: 32px;
+}
+.material-symbols-outlined.icon-xl {
+  font-size: 48px;
+}
+.material-symbols-outlined.text-primary {
+  color: #001E82;
+}
+.material-symbols-outlined.text-gold {
+  color: #EAA221;
+}
+.material-symbols-outlined.text-green {
+  color: #79B619;
+}
+.material-symbols-outlined.text-red {
+  color: #b31602;
+}
+.material-symbols-outlined.text-white {
+  color: #ffffff;
+}
+.material-symbols-outlined.icon-gradient-gold {
+  background: linear-gradient(180deg, #EFC46E 20%, #EAA221 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.material-symbols-outlined.icon-gradient-blue {
+  background: linear-gradient(180deg, #001E82 20%, #0c31AC 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.material-symbols-outlined.icon-filled {
+  font-variation-settings: "FILL" 1;
+}
+
 body {
   font-family: "Inter", sans-serif;
   color: #212529;

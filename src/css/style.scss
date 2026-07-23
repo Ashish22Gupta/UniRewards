@@ -26,6 +26,43 @@ $font-inter: 'Inter', sans-serif;
     transition: $property $duration $ease;
 }
 
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  vertical-align: middle;
+  
+  &.icon-sm { font-size: 18px; }
+  &.icon-md { font-size: 24px; }
+  &.icon-lg { font-size: 32px; }
+  &.icon-xl { font-size: 48px; }
+  
+  &.text-primary { color: $primary-blue; }
+  &.text-gold { color: $gold; }
+  &.text-green { color: $green; }
+  &.text-red { color: $red; }
+  &.text-white { color: $white; }
+  
+  &.icon-gradient-gold {
+    @include gradient-text($gold-light, $gold);
+  }
+  &.icon-gradient-blue {
+    @include gradient-text($primary-blue, $secondary-blue);
+  }
+  &.icon-filled{
+    font-variation-settings: 'FILL' 1;
+  }
+}
+
 body {
     font-family: $font-inter;
     color: $dark;

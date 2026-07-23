@@ -123,6 +123,28 @@ body {
   color: #212529;
 }
 
+.btn-secondary {
+  background: transparent;
+  color: #001E82;
+  border: 2px solid #001E82;
+  transition: all 0.3s ease;
+}
+.btn-secondary:hover {
+  background: #001E82;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 30, 130, 0.2);
+}
+.btn-secondary:active {
+  transform: scale(0.95);
+}
+.btn-secondary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
 .hero-section {
   background: linear-gradient(135deg, rgba(0, 30, 130, 0.95), rgba(12, 49, 172, 0.85)), url("../images/hero-bg.jpg") center/cover no-repeat;
   min-height: 100vh;

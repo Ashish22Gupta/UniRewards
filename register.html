@@ -10,7 +10,7 @@
     <!-- Google Material Symbols - Only loading the icons we need -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0&icon_names=account_balance_wallet,celebration,check,check_circle,emoji_events,flag,rate_review,rocket_launch,sports_esports,star" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0&icon_names=account_balance_wallet,celebration,check,check_circle,emoji_events,flag,group_add,rate_review,rocket_launch,share,sports_esports,star" rel="stylesheet">
     <link href="src/css/style.css" rel="stylesheet" />
     <style>
         .font-inter { font-family: 'Inter', sans-serif; }
@@ -81,8 +81,29 @@
                     <h3 class="text-xl font-bold text-[#001E82] mb-4">Your Interests</h3>
                     <p class="text-gray-600 mb-4">Select the types of challenges you're interested in</p>
                     <div class="grid grid-cols-2 gap-3">
-                        <label class="quiz-option p-3 border-2 rounded-lg cursor-pointer text-center"><span class="material-symbols-outlined icon-xl text-primary">sports_esports</span> Gaming</label>
-                        <label class="quiz-option p-3 border-2 rounded-lg cursor-pointer text-center"><span class="material-symbols-outlined icon-xl text-primary">rate_review</span> Reviews</label>
+                        <label class="quiz-option p-3 border-2 rounded-lg cursor-pointer text-center border-gray-200 hover:border-[#001E82] transition">
+                            <input type="checkbox" name="interests" value="gaming" class="hidden interest-checkbox" />
+                            <span class="material-symbols-outlined icon-xl text-primary block mx-auto">sports_esports</span>
+                            <span class="block mt-1 text-sm font-medium">Gaming</span>
+                        </label>
+
+                        <label class="quiz-option p-3 border-2 rounded-lg cursor-pointer text-center border-gray-200 hover:border-[#001E82] transition">
+                            <input type="checkbox" name="interests" value="reviews" class="hidden interest-checkbox" />
+                            <span class="material-symbols-outlined icon-xl text-primary block mx-auto">rate_review</span>
+                            <span class="block mt-1 text-sm font-medium">Reviews</span>
+                        </label>
+
+                        <label class="quiz-option p-3 border-2 rounded-lg cursor-pointer text-center border-gray-200 hover:border-[#001E82] transition">
+                            <input type="checkbox" name="interests" value="social" class="hidden interest-checkbox" />
+                            <span class="material-symbols-outlined icon-xl text-primary block mx-auto">share</span>
+                            <span class="block mt-1 text-sm font-medium">Social Media</span>
+                        </label>
+
+                        <label class="quiz-option p-3 border-2 rounded-lg cursor-pointer text-center border-gray-200 hover:border-[#001E82] transition">
+                            <input type="checkbox" name="interests" value="referrals" class="hidden interest-checkbox" />
+                            <span class="material-symbols-outlined icon-xl text-primary block mx-auto">group_add</span>
+                            <span class="block mt-1 text-sm font-medium">Referrals</span>
+                        </label>
                     </div>
                     <div class="flex gap-3 mt-6">
                         <button type="button" class="btn-prev btn-secondary flex-1 py-3 rounded-lg">Back</button>
@@ -115,7 +136,7 @@
                         <label class="form-label">Enter OTP *</label>
                         <span>Didn't receive OTP? <button type="button" id="resendOtpReg" class="text-[#001E82] font-semibold">Resend (<span id="otpTimerRegister">01:00</span>)</button></span>
                     </div>
-                    <div class="flex gap-2 justify-center mb-6 otp-container">
+                    <div class="flex gap-2 mb-6 otp-container">
                         <input type="text" maxlength="1" class="otp-input w-12 h-14 text-center text-xl border-2 rounded-lg" required>
                         <input type="text" maxlength="1" class="otp-input w-12 h-14 text-center text-xl border-2 rounded-lg" required>
                         <input type="text" maxlength="1" class="otp-input w-12 h-14 text-center text-xl border-2 rounded-lg" required>
@@ -181,6 +202,46 @@
                 timerEl.textContent = '00:00';
             }
         }, 1000);
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.quiz-option').forEach(option => {
+                option.addEventListener('click', function(e) {
+                    const checkbox = this.querySelector('.interest-checkbox');
+                    
+                    if (checkbox) {
+                        checkbox.checked = !checkbox.checked;
+                        
+                        if (checkbox.checked) {
+                            this.classList.add('border-[#001E82]', 'bg-[#001E82]/5');
+                            this.classList.remove('border-gray-200');
+                            const indicator = this.querySelector('.check-indicator');
+                            if (indicator) indicator.classList.remove('hidden');
+                        } else {
+                            this.classList.remove('border-[#001E82]', 'bg-[#001E82]/5');
+                            this.classList.add('border-gray-200');
+                            const indicator = this.querySelector('.check-indicator');
+                            if (indicator) indicator.classList.add('hidden');
+                        }
+                    }
+                });
+            });
+
+            document.querySelectorAll('.quiz-option input[type="radio"]').forEach(radio => {
+                radio.addEventListener('change', function() {
+                    const parent = this.closest('.quiz-option');
+                    if (parent) {
+                        parent.parentElement.querySelectorAll('.quiz-option').forEach(opt => {
+                            opt.classList.remove('bg-[#001E82]/5', 'border-[#001E82]');
+                            opt.classList.add('border-gray-200');
+                        });
+                        parent.classList.add('bg-[#001E82]/5', 'border-[#001E82]');
+                        parent.classList.remove('border-gray-200');
+                    }
+                });
+            });
+        });
     </script>
 
 </body>

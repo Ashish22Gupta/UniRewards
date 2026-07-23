@@ -142,6 +142,31 @@ body {
     }
 }
 
+.btn-secondary {
+    background: transparent;
+    color: $primary-blue;
+    border: 2px solid $primary-blue;
+    @include transition;
+
+    &:hover {
+        background: $primary-blue;
+        color: $white;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba($primary-blue, 0.2);
+    }
+
+    &:active {
+        transform: scale(0.95);
+    }
+
+    &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        transform: none !important;
+        box-shadow: none !important;
+    }
+}
+
 .hero-section {
     background: linear-gradient(135deg, rgba($primary-blue, 0.95), rgba($secondary-blue, 0.85)),
                 url('../images/hero-bg.jpg') center/cover no-repeat;

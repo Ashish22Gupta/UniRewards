@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stickers - UniRewards</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0&icon_names=celebration,check_circle,error,gift,info,lock,star,warning" rel="stylesheet">
+    <link href="src/css/style.css" rel="stylesheet" />
+</head>
+<body class="bg-[#0a0e27]">
+    <nav class="bg-[#0d1330]/80 backdrop-blur-xl border-b border-white/5 py-3 sticky top-0 z-50">
+        <div class="container mx-auto px-4 flex items-center justify-between">
+            <button class="text-white text-2xl hover:scale-110 transition-transform" id="sidebarToggle" aria-label="Open menu"><i class="bi bi-list"></i></button>
+            <a href="index.html" class="flex items-center gap-2">
+                <img src="./src/images/logo.png" alt="UniRewards" class="h-8 w-auto" />
+                <span class="text-white font-bold text-lg font-york hidden md:inline">UniRewards</span>
+            </a>
+            <a href="profile.html" class="text-white text-2xl hover:scale-110 transition-transform" aria-label="Profile"><i class="bi bi-person-circle"></i></a>
+        </div>
+    </nav>
+
+    <div class="sidebar fixed top-0 left-0 h-full w-72 bg-[#0d1330] border-r border-white/5 shadow-2xl z-50 transform -translate-x-full" id="sidebar">
+        <div class="p-6 border-b border-white/5">
+            <div class="flex items-center justify-between">
+                <img src="./src/images/logo.png" alt="UniRewards" class="h-10 w-auto" />
+                <button class="text-2xl text-gray-400 hover:text-white" id="sidebarClose" aria-label="Close menu"><i class="bi bi-x"></i></button>
+            </div>
+        </div>
+        <nav class="p-4">
+            <ul class="space-y-1 text-gray-400">
+                <li><a href="rewards.html" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-white/5 hover:text-white transition"><i class="bi bi-grid-fill"></i> Dashboard</a></li>
+                <li><a href="my-rewards.html" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-white/5 hover:text-white transition"><i class="bi bi-gift-fill"></i> My Rewards</a></li>
+                <li><a href="stickers.html" class="flex items-center gap-3 px-4 py-3 rounded-lg bg-[#001E82]/30 text-white font-semibold border border-[#001E82]/50"><i class="bi bi-stars"></i> Stickers</a></li>
+                <li><a href="scratch-cards.html" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-white/5 hover:text-white transition"><i class="bi bi-ticket-perforated-fill"></i> Scratch Cards</a></li>
+                <li><a href="profile.html" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-white/5 hover:text-white transition"><i class="bi bi-person-fill"></i> Profile & KYC</a></li>
+                <li><a href="help.html" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-white/5 hover:text-white transition"><i class="bi bi-question-circle-fill"></i> Help Center</a></li>
+                <li><a href="faq.html" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-white/5 hover:text-white transition"><i class="bi bi-info-circle-fill"></i> FAQ</a></li>
+                <li><a href="terms.html" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-white/5 hover:text-white transition"><i class="bi bi-file-text-fill"></i> Terms & Conditions</a></li>
+                <li><a href="privacy.html" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-white/5 hover:text-white transition"><i class="bi bi-shield-lock-fill"></i> Privacy Policy</a></li>
+                <li><a href="contact.html" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-white/5 hover:text-white transition"><i class="bi bi-envelope-fill"></i> Contact Us</a></li>
+                <li class="border-t border-white/5 pt-4 mt-4"><a href="index.html" class="logout-btn flex items-center gap-3 px-4 py-3 rounded-lg text-red-400 hover:bg-red-500/10 transition"><i class="bi bi-box-arrow-right"></i> Logout</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="sidebar-overlay fixed inset-0 bg-black/70 backdrop-blur-sm z-40 hidden" id="sidebarOverlay"></div>
+
+    <main class="container mx-auto px-4 py-8 max-w-5xl">
+        <div class="holo-stage rounded-2xl p-6 md:p-8 mb-6 relative border border-white/5 overflow-hidden">
+            <div class="orb orb-1"></div>
+            <div class="orb orb-2"></div>
+
+            <div class="relative z-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+                <div>
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold mb-3"
+                         style="background: rgba(255,210,0,0.1); color: #FFD200; border: 1px solid rgba(255,210,0,0.2);">
+                        <span class="material-symbols-outlined" style="font-size:14px">star</span>
+                        Holographic Edition
+                    </div>
+                    <h1 class="text-3xl md:text-4xl font-bold font-york text-white tracking-tight">
+                        Legendary<br class="md:hidden">
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#FFD200] via-[#EAA221] to-[#79B619]">Collection</span>
+                    </h1>
+                    <p class="text-white/50 text-sm mt-2 max-w-md">Chase the holographic set. Every sticker you collect lights up brighter.</p>
+                </div>
+
+                <div class="text-left md:text-right">
+                    <p class="text-6xl md:text-7xl font-bold font-york text-transparent bg-clip-text bg-gradient-to-br from-white to-white/40" id="stickerCount">2<span class="text-3xl text-white/30">/5</span></p>
+                    <p class="text-xs uppercase tracking-widest text-white/40 mt-1">Collected</p>
+                </div>
+            </div>
+
+            <div class="relative z-10 mt-6">
+                <div class="flex items-center justify-between text-[10px] uppercase tracking-widest font-bold text-white/40 mb-2">
+                    <span>Common</span>
+                    <span>Rare</span>
+                    <span>Epic</span>
+                    <span>Legendary</span>
+                    <span>Mythic</span>
+                </div>
+                <div class="rarity-track">
+                    <div class="rarity-fill" id="rarityFill" style="width: 40%;"></div>
+                </div>
+                <p class="text-xs text-white/50 mt-2" id="rarityLabel">2 of 5 — next: Rare tier</p>
+            </div>
+        </div>
+
+        <div class="mb-6">
+            <div class="flex items-center justify-between mb-4 px-1">
+                <h2 class="text-sm font-bold uppercase tracking-widest text-white/60 flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-[#79B619] animate-pulse"></span>
+                    Your Collection
+                </h2>
+                <span class="text-xs text-white/40">Sort by: Rarity ▾</span>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4" id="stickerGrid">
+
+                <div class="holo-card collected aspect-square cursor-pointer" data-rarity="common">
+                    <span class="rarity-label" data-r="common">Common</span>
+                    <span class="collected-badge">
+                        <span class="material-symbols-outlined text-white" style="font-size:14px">check_circle</span>
+                    </span>
+                    <img src="https://picsum.photos/200/200?random=30" alt="Sticker" class="w-full h-full object-cover" />
+                </div>
+
+                <div class="holo-card collected aspect-square cursor-pointer" data-rarity="rare">
+                    <span class="rarity-label" data-r="rare">Rare</span>
+                    <span class="collected-badge">
+                        <span class="material-symbols-outlined text-white" style="font-size:14px">check_circle</span>
+                    </span>
+                    <img src="https://picsum.photos/200/200?random=31" alt="Sticker" class="w-full h-full object-cover" />
+                </div>
+
+                <div class="holo-card locked aspect-square flex flex-col items-center justify-center gap-2 relative">
+                    <div class="locked-shimmer"></div>
+                    <span class="rarity-label" data-r="epic">Epic</span>
+                    <span class="material-symbols-outlined text-white/20" style="font-size:36px">lock</span>
+                    <span class="text-[10px] uppercase tracking-widest text-white/30 font-bold">Locked</span>
+                </div>
+
+                <div class="holo-card locked aspect-square flex flex-col items-center justify-center gap-2 relative">
+                    <div class="locked-shimmer" style="animation-delay: -1.5s;"></div>
+                    <span class="rarity-label" data-r="legendary">Legendary</span>
+                    <span class="material-symbols-outlined text-white/20" style="font-size:36px">lock</span>
+                    <span class="text-[10px] uppercase tracking-widest text-white/30 font-bold">Locked</span>
+                </div>
+
+                <div class="holo-card locked aspect-square flex flex-col items-center justify-center gap-2 relative">
+                    <div class="locked-shimmer" style="animation-delay: -3s;"></div>
+                    <span class="rarity-label" data-r="mythic">Mythic</span>
+                    <span class="material-symbols-outlined text-white/20" style="font-size:36px">lock</span>
+                    <span class="text-[10px] uppercase tracking-widest text-white/30 font-bold">Locked</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="rounded-2xl p-6 relative overflow-hidden border border-white/10"
+             style="background: linear-gradient(135deg, rgba(234,162,33,0.12), rgba(0,30,130,0.2));">
+            <div class="absolute -top-12 -right-12 w-40 h-40 rounded-full" style="background: radial-gradient(circle, rgba(255,210,0,0.2) 0%, transparent 70%);"></div>
+            <div class="relative flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
+                         style="background: linear-gradient(135deg, #FFD200, #EAA221); box-shadow: 0 8px 24px rgba(234,162,33,0.4);">
+                        <span class="material-symbols-outlined text-[#001E82]" style="font-size:24px">star</span>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold font-york text-white">Complete the Legendary Set</h3>
+                        <p class="text-white/60 text-sm mt-1">Collect all 5 to unlock <strong class="text-[#FFD200]">₹50 bonus</strong> + Mythic badge</p>
+                    </div>
+                </div>
+                <div class="text-right flex-shrink-0">
+                    <p class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#FFD200] to-[#EAA221]" id="milestoneCount">3</p>
+                    <p class="text-[10px] uppercase tracking-widest text-white/40">Remaining</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="stickerModal" class="modal hidden fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md p-4">
+        <div class="bg-[#0d1330] rounded-2xl p-6 max-w-md w-full shadow-2xl relative border border-white/10">
+            <button data-close="stickerModal" class="absolute top-4 right-4 text-gray-500 hover:text-white text-2xl" aria-label="Close">&times;</button>
+            <h3 class="text-xl font-bold text-white font-york mb-1">Unlock Sticker</h3>
+            <p class="text-sm text-white/50 mb-4">Upload a photo to reveal this slot</p>
+            <form id="stickerForm" class="space-y-4">
+                <div class="upload-zone border-2 border-dashed border-white/10 hover:border-[#EAA221]/50 rounded-xl p-6 text-center cursor-pointer bg-white/[0.02] transition">
+                    <input type="file" id="stickerUpload" class="hidden" accept=".jpg,.jpeg,.png">
+                    <svg class="mx-auto h-10 w-10 text-white/30 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" /></svg>
+                    <p class="text-sm text-white/70 font-medium">Click to upload a photo</p>
+                    <p class="text-xs text-white/40 mt-1">JPG, PNG · Max 5MB</p>
+                    <p class="file-name text-sm font-semibold text-[#FFD200] mt-2 hidden"></p>
+                </div>
+                <button type="submit" class="w-full py-3 rounded-lg font-bold text-[#0a0e27]" style="background: linear-gradient(135deg, #FFD200, #EAA221); box-shadow: 0 8px 24px rgba(234,162,33,0.4);">
+                    <i class="bi bi-stars mr-1"></i> Reveal Sticker
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="src/js/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const grid = document.getElementById('stickerGrid');
+            const countEl = document.getElementById('stickerCount');
+            const rarityFill = document.getElementById('rarityFill');
+            const rarityLabel = document.getElementById('rarityLabel');
+            const milestoneCount = document.getElementById('milestoneCount');
+
+            const tiers = ['Common', 'Rare', 'Epic', 'Legendary', 'Mythic'];
+
+            const updateState = () => {
+                const total = grid.querySelectorAll('.holo-card').length;
+                const collected = grid.querySelectorAll('.holo-card.collected').length;
+                const pct = (collected / total) * 100;
+
+                countEl.innerHTML = `${collected}<span class="text-3xl text-white/30">/${total}</span>`;
+                rarityFill.style.width = pct + '%';
+                milestoneCount.textContent = total - collected;
+
+                if (collected === total) {
+                    rarityLabel.textContent = 'Legendary set complete — ₹50 bonus unlocked!';
+                } else {
+                    const nextTier = tiers[collected] || 'Mythic';
+                    rarityLabel.textContent = `${collected} of ${total} — next: ${nextTier} tier`;
+                }
+            };
+            updateState();
+
+            const bindLocked = () => {
+                grid.querySelectorAll('.holo-card.locked').forEach(card => {
+                    if (card.dataset.bound === 'true') return;
+                    card.dataset.bound = 'true';
+                    card.addEventListener('click', () => {
+                        window.__pendingStickerCard = card;
+                        openModal('stickerModal');
+                    });
+                });
+            };
+            bindLocked();
+
+            const uploadInput = document.getElementById('stickerUpload');
+            const fileNameEl = document.querySelector('#stickerForm .file-name');
+            uploadInput.addEventListener('change', () => {
+                const f = uploadInput.files[0];
+                if (!f) return;
+                if (f.size > 5 * 1024 * 1024) {
+                    showToast('File must be under 5MB', 'error');
+                    uploadInput.value = '';
+                    return;
+                }
+                fileNameEl.textContent = `✓ ${f.name}`;
+                fileNameEl.classList.remove('hidden');
+            });
+
+            document.getElementById('stickerForm').addEventListener('submit', (e) => {
+                e.preventDefault();
+                const card = window.__pendingStickerCard;
+                if (!card) return;
+                const file = uploadInput.files[0];
+                if (!file) {
+                    showToast('Please choose a photo', 'error');
+                    return;
+                }
+                closeModal('stickerModal');
+
+                const rarityLabelEl = card.querySelector('.rarity-label');
+                const rarity = rarityLabelEl ? rarityLabelEl.getAttribute('data-r') : 'common';
+
+                const reader = new FileReader();
+                reader.onload = () => {
+                    card.classList.remove('locked');
+                    card.classList.add('collected', 'just-collected');
+                    card.setAttribute('data-rarity', rarity);
+                    card.innerHTML = `
+                        <span class="rarity-label" data-r="${rarity}">${rarity.charAt(0).toUpperCase() + rarity.slice(1)}</span>
+                        <span class="collected-badge">
+                            <span class="material-symbols-outlined text-white" style="font-size:14px">check_circle</span>
+                        </span>
+                        <img src="${reader.result}" alt="Sticker" class="w-full h-full object-cover" />
+                        <div class="sparkle-burst"></div>
+                    `;
+
+                    const burst = card.querySelector('.sparkle-burst');
+                    const icons = ['✨', '⭐', '💫', '🌟', '✦'];
+                    for (let i = 0; i < 10; i++) {
+                        const s = document.createElement('span');
+                        s.textContent = icons[i % icons.length];
+                        const angle = (Math.PI * 2 * i) / 10;
+                        s.style.left = '50%';
+                        s.style.top = '50%';
+                        s.style.color = ['#FFD200', '#EAA221', '#79B619', '#60a5fa'][i % 4];
+                        s.style.setProperty('--dx', `${Math.cos(angle) * 70}px`);
+                        s.style.setProperty('--dy', `${Math.sin(angle) * 70}px`);
+                        s.style.animationDelay = `${i * 0.04}s`;
+                        burst.appendChild(s);
+                    }
+
+                    setTimeout(() => card.classList.remove('just-collected'), 1100);
+                    updateState();
+                    showToast('Sticker unlocked!', 'success', 2500, 'celebration');
+
+                    const total = grid.querySelectorAll('.holo-card').length;
+                    const collected = grid.querySelectorAll('.holo-card.collected').length;
+                    if (collected === total) {
+                        setTimeout(() => showToast('🎉 Legendary Set Complete! ₹50 unlocked!', 'success', 5000, 'celebration'), 900);
+                    }
+                };
+                reader.readAsDataURL(file);
+
+                uploadInput.value = '';
+                fileNameEl.classList.add('hidden');
+                window.__pendingStickerCard = null;
+            });
+        });
+    </script>
+</body>
+</html>

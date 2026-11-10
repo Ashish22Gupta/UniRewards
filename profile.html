@@ -7,71 +7,347 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet" />
-    <!-- Google Material Symbols - Only loading the icons we need -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0&icon_names=account_balance_wallet,celebration,check,check_circle,emoji_events,flag,rate_review,rocket_launch,sports_esports,star" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0&icon_names=account_balance_wallet,celebration,check,check_circle,clock,delete,download,edit,emoji_events,error,flag,info,person,rocket_launch,save,star,warning" rel="stylesheet">
     <link href="src/css/style.css" rel="stylesheet" />
     <style>
         .font-inter { font-family: 'Inter', sans-serif; }
         .font-york { font-family: 'York Grot', 'Inter', sans-serif; }
+        html { scroll-padding-top: 90px; }
+
+        .avatar-uploader {
+            position: relative;
+            width: 112px;
+            height: 112px;
+            border-radius: 9999px;
+            background: linear-gradient(135deg, #001E82 0%, #0c31AC 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 8px 24px rgba(0, 30, 130, 0.25);
+        }
+        .avatar-uploader:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0, 30, 130, 0.35); }
+        .avatar-uploader img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            border-radius: 9999px;
+        }
+        .avatar-uploader .avatar-placeholder {
+            font-size: 48px;
+            color: #fff;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .avatar-uploader .avatar-overlay {
+            position: absolute; inset: 0;
+            background: rgba(0,0,0,0.55);
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0;
+            transition: opacity 0.25s ease;
+        }
+        .avatar-uploader:hover .avatar-overlay { opacity: 1; }
+
+        .inline-edit {
+            background: transparent;
+            border: 2px dashed transparent;
+            border-radius: 8px;
+            padding: 2px 6px;
+            transition: all 0.2s ease;
+            font: inherit;
+            color: inherit;
+            width: auto;
+            min-width: 100px;
+        }
+        .inline-edit:focus {
+            outline: none;
+            border-color: #001E82;
+            background: #fff;
+            box-shadow: 0 0 0 3px rgba(0, 30, 130, 0.1);
+        }
+
+        .file-thumb {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 2px solid #e5e7eb;
+            background: #f8f9fa;
+        }
+        .file-thumb img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+        }
+        .file-thumb .remove-btn {
+            position: absolute;
+            top: 4px; right: 4px;
+            width: 24px; height: 24px;
+            border-radius: 9999px;
+            background: rgba(179, 22, 2, 0.9);
+            color: #fff;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 14px;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+        .file-thumb:hover .remove-btn { opacity: 1; }
+
+        .kyc-progress-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            background: linear-gradient(135deg, rgba(0,30,130,0.08), rgba(12,49,172,0.06));
+            border: 1px solid rgba(0,30,130,0.15);
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #001E82;
+        }
+
+        .danger-zone {
+            border: 2px solid rgba(179, 22, 2, 0.2);
+            background: linear-gradient(135deg, rgba(179, 22, 2, 0.02), rgba(179, 22, 2, 0.05));
+        }
+
+        .profile-stat {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .profile-stat:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+        }
     </style>
 </head>
-<body>
-    <header class="bg-gradient-to-r from-[#001E82] to-[#0c31AC] py-4">
+<body class="bg-[#f8f9fa]">
+    <nav class="bg-gradient-to-r from-[#001E82] to-[#0c31AC] py-3 sticky top-0 z-50 shadow-md">
         <div class="container mx-auto px-4">
             <div class="flex items-center justify-between">
+                <button class="text-white text-2xl hover:scale-110 transition-transform" id="sidebarToggle" aria-label="Open menu">
+                    <i class="bi bi-list"></i>
+                </button>
                 <a href="index.html" class="flex items-center gap-2">
-                    <img src="./src/images/logo.png" alt="UniRewards" class="h-10 w-auto" />
-                    <span class="text-white font-bold text-xl font-york hidden md:inline">UniRewards</span>
+                    <img src="./src/images/logo.png" alt="UniRewards" class="h-8 w-auto" />
+                    <span class="text-white font-bold text-lg font-york hidden md:inline">UniRewards</span>
                 </a>
-                <a href="rewards.html" class="text-white/80 hover:text-white text-sm">
-                    <i class="bi bi-arrow-left"></i> Back to Dashboard
+                <a href="rewards.html" class="text-white text-2xl hover:scale-110 transition-transform" aria-label="Dashboard">
+                    <i class="bi bi-grid-fill"></i>
                 </a>
             </div>
         </div>
-    </header>
+    </nav>
 
-    <main class="container mx-auto px-4 py-8 max-w-2xl">
-        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-6 text-center">
-            <div class="w-24 h-24 rounded-full bg-[#001E82]/10 flex items-center justify-center text-4xl text-[#001E82] mx-auto">
-                <i class="bi bi-person-circle"></i>
-            </div>
-            <h2 class="text-2xl font-bold font-york text-[#001E82] mt-3">John Doe</h2>
-            <p class="text-sm text-gray-500">Student • Member since 2026</p>
-            <div class="flex justify-center gap-3 mt-3">
-                <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-semibold"><span class="material-symbols-outlined icon-sm text-green">check_circle</span> Verified</span>
-                <span class="px-3 py-1 bg-yellow-100 text-yellow-700 rounded-full text-xs font-semibold"><span class="material-symbols-outlined icon-sm text-gold">star</span> 500 Points</span>
+    <div class="sidebar fixed top-0 left-0 h-full w-72 bg-white shadow-2xl z-50 transform -translate-x-full" id="sidebar">
+        <div class="p-6 border-b border-gray-100">
+            <div class="flex items-center justify-between">
+                <img src="./src/images/logo.png" alt="UniRewards" class="h-10 w-auto" />
+                <button class="text-2xl text-gray-500 hover:text-gray-700" id="sidebarClose" aria-label="Close menu">
+                    <i class="bi bi-x"></i>
+                </button>
             </div>
         </div>
+        <nav class="p-4">
+            <ul class="space-y-1">
+                <li>
+                    <a href="rewards.html" class="flex items-center gap-3 px-4 py-3 rounded-lg bg-[#001E82]/10 text-[#001E82] font-semibold">
+                        <i class="bi bi-grid-fill"></i> Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a href="my-rewards.html" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-50 transition">
+                        <i class="bi bi-gift-fill"></i> My Rewards
+                    </a>
+                </li>
+                <li>
+                    <a href="stickers.html" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-50 transition">
+                        <i class="bi bi-stars"></i> Stickers
+                    </a>
+                </li>
+                <li>
+                    <a href="scratch-cards.html" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-50 transition">
+                        <i class="bi bi-ticket-perforated-fill"></i> Scratch Cards
+                    </a>
+                </li>
+                <li>
+                    <a href="profile.html" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-50 transition">
+                        <i class="bi bi-person-fill"></i> Profile & KYC
+                    </a>
+                </li>
+                <li><a href="help.html" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-50 transition"><i class="bi bi-question-circle-fill"></i> Help Center</a></li>
+                <li><a href="faq.html" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-50 transition"><i class="bi bi-info-circle-fill"></i> FAQ</a></li>
+                <li><a href="terms.html" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-50 transition"><i class="bi bi-file-text-fill"></i> Terms & Conditions</a></li>
+                <li><a href="privacy.html" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-50 transition"><i class="bi bi-shield-lock-fill"></i> Privacy Policy</a></li>
+                <li><a href="contact.html" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-50 transition"><i class="bi bi-envelope-fill"></i> Contact Us</a></li>
+                <li>
+                    <a href="index.html" class="flex items-center gap-3 px-4 py-3 rounded-lg text-red-500 hover:bg-red-50 transition">
+                        <i class="bi bi-box-arrow-right"></i> Logout
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="sidebar-overlay fixed inset-0 bg-black/50 z-40 hidden" id="sidebarOverlay"></div>
+
+    <main class="container mx-auto px-4 py-8">
+        <div class="bg-gradient-to-r from-[#001E82] to-[#0c31AC] rounded-2xl p-8 mb-6 text-white relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -mr-20 -mt-20"></div>
+            <div class="absolute bottom-0 left-0 w-48 h-48 bg-[#EAA221]/10 rounded-full -ml-16 -mb-16"></div>
+
+            <div class="relative z-10 flex flex-col md:flex-row items-center md:items-start gap-6">
+                <div class="relative flex-shrink-0">
+                    <div class="avatar-uploader" id="avatarUploader" role="button" aria-label="Change avatar" tabindex="0">
+                        <img id="avatarImg" src="" alt="" class="hidden" />
+                        <div class="avatar-placeholder" id="avatarPlaceholder">
+                            <i class="bi bi-person-fill"></i>
+                        </div>
+                        <div class="avatar-overlay">
+                            <i class="bi bi-camera-fill text-white text-2xl"></i>
+                        </div>
+                        <input type="file" id="avatarInput" class="hidden" accept="image/*" />
+                    </div>
+                    <span class="absolute -bottom-1 -right-1 w-8 h-8 rounded-full bg-[#79B619] border-4 border-white flex items-center justify-center text-white text-xs font-bold">✓</span>
+                </div>
+
+                <div class="flex-1 text-center md:text-left">
+                    <div class="flex items-center justify-center md:justify-start gap-2">
+                        <h1 class="text-3xl font-bold font-york" id="profileNameDisplay">John Doe</h1>
+                        <button class="text-white/60 hover:text-white transition" onclick="editProfileField('name')" aria-label="Edit name">
+                            <span class="material-symbols-outlined" style="font-size:20px">edit</span>
+                        </button>
+                    </div>
+                    <div class="flex items-center justify-center md:justify-start gap-2 mt-1">
+                        <p class="text-white/70 text-sm" id="profileEmailDisplay">john.doe@university.edu</p>
+                        <button class="text-white/60 hover:text-white transition" onclick="editProfileField('email')" aria-label="Edit email">
+                            <span class="material-symbols-outlined" style="font-size:16px">edit</span>
+                        </button>
+                    </div>
+                    <p class="text-white/60 text-xs mt-2">Member since Jan 2026</p>
+
+                    <div class="flex flex-wrap justify-center md:justify-start gap-2 mt-3">
+                        <span class="inline-flex items-center gap-1 px-3 py-1 bg-white/15 backdrop-blur rounded-full text-xs font-semibold">
+                            <span class="material-symbols-outlined" style="font-size:16px">check_circle</span> Verified Student
+                        </span>
+                        <span class="inline-flex items-center gap-1 px-3 py-1 bg-[#FFD200]/20 rounded-full text-xs font-semibold text-[#FFD200]">
+                            <span class="material-symbols-outlined" style="font-size:16px">star</span> 500 Points
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+            <div class="profile-stat bg-white rounded-xl p-4 shadow-sm border border-gray-100 text-center">
+                <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-[#001E82] to-[#0c31AC] flex items-center justify-center mx-auto mb-2">
+                    <span class="material-symbols-outlined text-white" style="font-size:20px">emoji_events</span>
+                </div>
+                <p class="text-2xl font-bold text-[#001E82]">12</p>
+                <p class="text-[11px] text-gray-500">Challenges</p>
+            </div>
+            <div class="profile-stat bg-white rounded-xl p-4 shadow-sm border border-gray-100 text-center">
+                <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-[#EAA221] to-[#EFC46E] flex items-center justify-center mx-auto mb-2">
+                    <span class="material-symbols-outlined text-white" style="font-size:20px">star</span>
+                </div>
+                <p class="text-2xl font-bold text-[#EAA221]">500</p>
+                <p class="text-[11px] text-gray-500">Points</p>
+            </div>
+            <div class="profile-stat bg-white rounded-xl p-4 shadow-sm border border-gray-100 text-center">
+                <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-[#79B619] to-[#4d8a0a] flex items-center justify-center mx-auto mb-2">
+                    <span class="material-symbols-outlined text-white" style="font-size:20px">celebration</span>
+                </div>
+                <p class="text-2xl font-bold text-[#79B619]">5</p>
+                <p class="text-[11px] text-gray-500">Rewards</p>
+            </div>
+            <div class="profile-stat bg-white rounded-xl p-4 shadow-sm border border-gray-100 text-center">
+                <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-[#b31602] to-[#8a1100] flex items-center justify-center mx-auto mb-2">
+                    <span class="material-symbols-outlined text-white" style="font-size:20px">rocket_launch</span>
+                </div>
+                <p class="text-2xl font-bold text-[#b31602]">82%</p>
+                <p class="text-[11px] text-gray-500">Completion</p>
+            </div>
+        </div>
+
         <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-6">
-            <h3 class="font-bold text-[#001E82] mb-4">
-                <i class="bi bi-shield-check mr-2"></i> Verification Status
+            <h3 class="font-bold text-[#001E82] mb-4 flex items-center gap-2">
+                <i class="bi bi-shield-check text-lg"></i> Verification Status
             </h3>
             <div class="space-y-2">
                 <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                    <span class="text-sm">Email Verification</span>
-                    <span class="text-sm text-green-600 font-semibold"><i class="bi bi-check-circle mr-1"></i> Verified</span>
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center">
+                            <i class="bi bi-envelope-check text-green-600"></i>
+                        </div>
+                        <div>
+                            <span class="text-sm font-medium">Email Verification</span>
+                            <p class="text-xs text-gray-400">Verified on Jan 05, 2026</p>
+                        </div>
+                    </div>
+                    <span class="text-sm text-green-600 font-semibold inline-flex items-center gap-1">
+                        <i class="bi bi-check-circle-fill"></i> Verified
+                    </span>
                 </div>
+
                 <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                    <span class="text-sm">Phone Verification</span>
-                    <span class="text-sm text-green-600 font-semibold"><i class="bi bi-check-circle mr-1"></i> Verified</span>
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center">
+                            <i class="bi bi-phone text-green-600"></i>
+                        </div>
+                        <div>
+                            <span class="text-sm font-medium">Phone Verification</span>
+                            <p class="text-xs text-gray-400">Verified on Jan 05, 2026</p>
+                        </div>
+                    </div>
+                    <span class="text-sm text-green-600 font-semibold inline-flex items-center gap-1">
+                        <i class="bi bi-check-circle-fill"></i> Verified
+                    </span>
                 </div>
+
                 <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                    <span class="text-sm">Age Verification</span>
-                    <span class="text-sm text-green-600 font-semibold"><i class="bi bi-check-circle mr-1"></i> Verified</span>
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center">
+                            <i class="bi bi-calendar-check text-green-600"></i>
+                        </div>
+                        <div>
+                            <span class="text-sm font-medium">Age Verification</span>
+                            <p class="text-xs text-gray-400">Verified on Jan 05, 2026</p>
+                        </div>
+                    </div>
+                    <span class="text-sm text-green-600 font-semibold inline-flex items-center gap-1">
+                        <i class="bi bi-check-circle-fill"></i> Verified
+                    </span>
                 </div>
-                <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                    <span class="text-sm">KYC Status</span>
-                    <span class="text-sm text-yellow-600 font-semibold"><i class="bi bi-clock mr-1"></i> Pending</span>
+
+                <div class="flex items-center justify-between p-3 bg-yellow-50 rounded-lg border border-yellow-200">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-full bg-yellow-100 flex items-center justify-center">
+                            <i class="bi bi-clock text-yellow-600"></i>
+                        </div>
+                        <div>
+                            <span class="text-sm font-medium">KYC Status</span>
+                            <p class="text-xs text-gray-500">Upload documents below to complete</p>
+                        </div>
+                    </div>
+                    <span class="text-sm text-yellow-600 font-semibold inline-flex items-center gap-1" id="kycStatus">
+                        <i class="bi bi-clock"></i> Pending
+                    </span>
                 </div>
             </div>
         </div>
-        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
-            <h3 class="font-bold text-[#001E82] mb-4">
-                <i class="bi bi-id-card mr-2"></i> Complete Your KYC
-            </h3>
-            <p class="text-sm text-gray-500 mb-4">Upload your documents to unlock all rewards</p>
+
+        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-6">
+            <div class="flex items-center justify-between mb-2 flex-wrap gap-2">
+                <h3 class="font-bold text-[#001E82] flex items-center gap-2">
+                    <i class="bi bi-id-card text-lg"></i> Complete Your KYC
+                </h3>
+                <span class="kyc-progress-pill" id="kycProgressPill">
+                    <span class="material-symbols-outlined" style="font-size:14px">info</span>
+                    <span id="kycProgressText">0 of 3 documents uploaded</span>
+                </span>
+            </div>
+            <p class="text-sm text-gray-500 mb-5">Upload your documents to unlock all rewards</p>
 
             <form id="kycForm" class="space-y-6">
                 <div class="floating-input">
@@ -79,120 +355,309 @@
                     <label for="kycName" class="floating-label">Full Name (as per PAN/Aadhar) *</label>
                 </div>
 
-                <div class="flex gap-4">
+                <div class="flex flex-col sm:flex-row gap-3 sm:gap-4">
                     <div class="floating-input flex-1">
-                        <input type="tel" id="kycPhone" class="form-input w-full" placeholder=" " required>
+                        <input type="tel" id="kycPhone" class="form-input w-full" placeholder=" " required pattern="[6-9][0-9]{9}" maxlength="10" minlength="10" oninput="this.value=this.value.replace(/\D/g,'').slice(0,10)">
                         <label for="kycPhone" class="floating-label">Mobile Number *</label>
                     </div>
                     <div class="flex items-center">
-                        <button type="button" id="sendKycOtp" class="btn-primary px-6 py-3 rounded-lg h-[48px]">Send OTP</button>
+                        <button type="button" id="sendKycOtp" class="btn-primary px-6 py-3 rounded-lg h-[48px] font-semibold">Send OTP</button>
                     </div>
                 </div>
-                
+
                 <p class="text-sm text-gray-500 text-right">Time remaining: <span id="otpTimerKYC" class="font-bold text-[#001E82]">00:45</span></p>
 
                 <div>
                     <label class="form-label mb-2 block">Aadhar Card (Front) *</label>
-                    <div class="upload-zone border-2 border-dashed border-gray-300 rounded-xl p-6 text-center cursor-pointer bg-gray-50 hover:bg-blue-50 transition">
-                        <input type="file" class="hidden" accept=".jpg,.png,.pdf" required>
-                        <svg class="mx-auto h-10 w-10 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" /></svg>
-                        <p class="text-sm text-gray-600">Click or drag to upload</p>
-                        <p class="text-xs text-gray-400 mt-1">JPG, PNG, PDF • Max 5MB</p>
+                    <div class="upload-zone border-2 border-dashed border-gray-300 rounded-xl p-6 text-center cursor-pointer bg-gray-50 transition" data-doc="aadhar-front">
+                        <input type="file" class="hidden" accept=".jpg,.jpeg,.png,.pdf" required>
+                        <div class="thumb-container hidden">
+                            <div class="file-thumb mx-auto">
+                                <img src="" alt="Preview" />
+                                <button type="button" class="remove-btn" aria-label="Remove">✕</button>
+                            </div>
+                        </div>
+                        <div class="upload-prompt">
+                            <svg class="mx-auto h-10 w-10 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" /></svg>
+                            <p class="text-sm text-gray-600">Click or drag to upload</p>
+                            <p class="text-xs text-gray-400 mt-1">JPG, PNG, PDF • Max 5MB</p>
+                        </div>
                         <p class="file-name text-sm font-semibold text-[#001E82] mt-2 hidden"></p>
                     </div>
                 </div>
 
                 <div>
                     <label class="form-label mb-2 block">Aadhar Card (Back) *</label>
-                    <div class="upload-zone border-2 border-dashed border-gray-300 rounded-xl p-6 text-center cursor-pointer bg-gray-50 hover:bg-blue-50 transition">
-                        <input type="file" class="hidden" accept=".jpg,.png,.pdf" required>
-                        <svg class="mx-auto h-10 w-10 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" /></svg>
-                        <p class="text-sm text-gray-600">Click or drag to upload</p>
+                    <div class="upload-zone border-2 border-dashed border-gray-300 rounded-xl p-6 text-center cursor-pointer bg-gray-50 transition" data-doc="aadhar-back">
+                        <input type="file" class="hidden" accept=".jpg,.jpeg,.png,.pdf" required>
+                        <div class="thumb-container hidden">
+                            <div class="file-thumb mx-auto">
+                                <img src="" alt="Preview" />
+                                <button type="button" class="remove-btn" aria-label="Remove">✕</button>
+                            </div>
+                        </div>
+                        <div class="upload-prompt">
+                            <svg class="mx-auto h-10 w-10 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" /></svg>
+                            <p class="text-sm text-gray-600">Click or drag to upload</p>
+                            <p class="text-xs text-gray-400 mt-1">JPG, PNG, PDF • Max 5MB</p>
+                        </div>
                         <p class="file-name text-sm font-semibold text-[#001E82] mt-2 hidden"></p>
                     </div>
                 </div>
 
                 <div>
                     <label class="form-label mb-2 block">PAN Card *</label>
-                    <div class="upload-zone border-2 border-dashed border-gray-300 rounded-xl p-6 text-center cursor-pointer bg-gray-50 hover:bg-blue-50 transition">
-                        <input type="file" class="hidden" accept=".jpg,.png,.pdf" required>
-                        <svg class="mx-auto h-10 w-10 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" /></svg>
-                        <p class="text-sm text-gray-600">Click or drag to upload</p>
+                    <div class="upload-zone border-2 border-dashed border-gray-300 rounded-xl p-6 text-center cursor-pointer bg-gray-50 transition" data-doc="pan">
+                        <input type="file" class="hidden" accept=".jpg,.jpeg,.png,.pdf" required>
+                        <div class="thumb-container hidden">
+                            <div class="file-thumb mx-auto">
+                                <img src="" alt="Preview" />
+                                <button type="button" class="remove-btn" aria-label="Remove">✕</button>
+                            </div>
+                        </div>
+                        <div class="upload-prompt">
+                            <svg class="mx-auto h-10 w-10 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" /></svg>
+                            <p class="text-sm text-gray-600">Click or drag to upload</p>
+                            <p class="text-xs text-gray-400 mt-1">JPG, PNG, PDF • Max 5MB</p>
+                        </div>
                         <p class="file-name text-sm font-semibold text-[#001E82] mt-2 hidden"></p>
                     </div>
                 </div>
 
-                <label class="flex items-center gap-2">
-                    <input type="checkbox" required class="w-4 h-4 text-[#001E82]">
+                <label class="flex items-start gap-2">
+                    <input type="checkbox" required class="mt-1 w-4 h-4 accent-[#001E82]">
                     <span class="text-sm">I confirm that all information provided is accurate and true.</span>
                 </label>
 
-                <button type="submit" class="btn-primary w-full py-3 rounded-lg font-bold">Submit KYC</button>
+                <button type="submit" class="btn-primary w-full sm:w-1/3 py-3 rounded-lg font-bold flex justify-center mx-auto">
+                    <i class="bi bi-send mr-1"></i> Submit KYC
+                </button>
             </form>
 
-            <div id="kycSuccess" class="hidden text-center p-8 bg-green-50 rounded-2xl border-2 border-green-200 mt-6">
-                <div class="text-5xl mb-4"><span class="material-symbols-outlined icon-sm text-green">check_circle</span></div>
+            <div id="kycSuccess" class="hidden text-center p-8 bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl border-2 border-green-200 mt-6">
+                <div class="mb-4 flex justify-center">
+                    <div class="w-20 h-20 rounded-full bg-green-500 flex items-center justify-center animate-pulse-slow">
+                        <span class="material-symbols-outlined text-white icon-xl">check_circle</span>
+                    </div>
+                </div>
                 <h3 class="text-2xl font-bold text-green-700 mb-2">KYC Submitted Successfully!</h3>
-                <p class="text-gray-600">Your documents will be verified within 24-48 hours.</p>
+                <p class="text-gray-600 mb-4">Your documents will be verified within 24-48 hours.</p>
+                <div class="flex items-center justify-center gap-6 mt-6 text-xs text-gray-500">
+                    <div class="text-center">
+                        <div class="w-8 h-8 rounded-full bg-green-100 text-green-600 flex items-center justify-center mx-auto mb-1">1</div>
+                        <p>Submitted</p>
+                    </div>
+                    <div class="h-0.5 w-8 bg-green-300"></div>
+                    <div class="text-center opacity-50">
+                        <div class="w-8 h-8 rounded-full bg-gray-100 text-gray-500 flex items-center justify-center mx-auto mb-1">2</div>
+                        <p>Review</p>
+                    </div>
+                    <div class="h-0.5 w-8 bg-gray-200"></div>
+                    <div class="text-center opacity-50">
+                        <div class="w-8 h-8 rounded-full bg-gray-100 text-gray-500 flex items-center justify-center mx-auto mb-1">3</div>
+                        <p>Verified</p>
+                    </div>
+                </div>
             </div>
+        </div>
 
+        <div class="danger-zone rounded-2xl p-6">
+            <h3 class="font-bold text-[#b31602] mb-2 flex items-center gap-2">
+                <span class="material-symbols-outlined" style="font-size:20px">warning</span>
+                Danger Zone
+            </h3>
+            <p class="text-sm text-gray-600 mb-4">Manage your account data and privacy controls.</p>
+            <div class="flex flex-col sm:flex-row gap-3">
+                <div class="w-100 sm:w-1/2 flex justify-center">
+                    <button type="button" class="flex w-full lg:w-1/2 items-center justify-center gap-2 px-4 py-2 bg-white border-2 border-gray-200 rounded-lg font-semibold text-sm hover:border-[#001E82] hover:text-[#001E82] transition" onclick="downloadAccountData()">
+                        <span class="material-symbols-outlined" style="font-size:18px">download</span>
+                        Download My Data
+                    </button>
+                </div>
+                <div class="w-100 sm:w-1/2 flex justify-center">
+                    <button type="button" class="flex w-full lg:w-1/2 items-center justify-center gap-2 px-4 py-2 bg-[#b31602] text-white rounded-lg font-semibold text-sm hover:bg-[#8a1100] transition" onclick="confirmDeleteAccount()">
+                        <span class="material-symbols-outlined" style="font-size:18px">delete</span>
+                        Delete Account
+                    </button>
+                </div>
+            </div>
+            <p class="text-xs text-gray-400 mt-3">
+                Deleting your account removes all data within 30 days, per our <a href="privacy.html" class="underline text-[#001E82]">Privacy Policy</a>.
+            </p>
         </div>
     </main>
+
+    <div id="editProfileModal" class="modal hidden fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+        <div class="bg-white rounded-2xl p-6 max-w-md w-full shadow-2xl relative">
+            <button class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-2xl" onclick="closeModal('editProfileModal')" aria-label="Close">&times;</button>
+            <h3 class="text-xl font-bold text-[#001E82] mb-4" id="editModalTitle">Edit Field</h3>
+            <form id="editProfileForm" class="space-y-4">
+                <div class="floating-input">
+                    <input type="text" id="editFieldInput" class="form-input w-full" placeholder=" " required>
+                    <label for="editFieldInput" class="floating-label" id="editFieldLabel">Value</label>
+                </div>
+                <div class="flex gap-3">
+                    <button type="button" onclick="closeModal('editProfileModal')" class="btn-secondary flex-1 py-3 rounded-lg font-bold">Cancel</button>
+                    <button type="submit" class="btn-primary flex-1 py-3 rounded-lg font-bold">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="src/js/script.js"></script>
     <script>
-        document.querySelectorAll('.upload-zone').forEach(zone => {
-            const fileInput = zone.querySelector('input[type="file"]');
-            const successDiv = zone.nextElementSibling;
+        const savedName = localStorage.getItem('profileName') || 'John Doe';
+        const savedEmail = localStorage.getItem('profileEmail') || 'john.doe@university.edu';
+        const savedAvatar = localStorage.getItem('profileAvatar');
 
-            zone.addEventListener('click', () => fileInput.click());
+        document.getElementById('profileNameDisplay').textContent = savedName;
+        document.getElementById('profileEmailDisplay').textContent = savedEmail;
+        if (savedAvatar) {
+            const img = document.getElementById('avatarImg');
+            img.src = savedAvatar;
+            img.classList.remove('hidden');
+            document.getElementById('avatarPlaceholder').classList.add('hidden');
+        }
 
-            fileInput.addEventListener('change', function() {
-                if (this.files && this.files.length > 0) {
-                    const file = this.files[0];
-                    const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'application/pdf'];
-                    const maxSize = 5 * 1024 * 1024;
+        const avatarUploader = document.getElementById('avatarUploader');
+        const avatarInput = document.getElementById('avatarInput');
+        avatarUploader.addEventListener('click', () => avatarInput.click());
+        avatarInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+            if (file.size > 2 * 1024 * 1024) {
+                showToast('Image must be under 2MB', 'error');
+                return;
+            }
+            const reader = new FileReader();
+            reader.onload = () => {
+                const img = document.getElementById('avatarImg');
+                img.src = reader.result;
+                img.classList.remove('hidden');
+                document.getElementById('avatarPlaceholder').classList.add('hidden');
+                localStorage.setItem('profileAvatar', reader.result);
+                showToast('Profile picture updated!', 'success', 2000, 'check_circle');
+            };
+            reader.readAsDataURL(file);
+        });
 
-                    if (!allowedTypes.includes(file.type)) {
-                        alert('Please upload JPG, JPEG, PNG, or PDF file.');
-                        this.value = '';
-                        return;
-                    }
+        let editingField = null;
+        window.editProfileField = (field) => {
+            editingField = field;
+            const isName = field === 'name';
+            const currentValue = isName ? savedName : savedEmail;
 
-                    if (file.size > maxSize) {
-                        alert('File size cannot exceed 5MB.');
-                        this.value = '';
-                        return;
-                    }
+            document.getElementById('editModalTitle').textContent = isName ? 'Edit Name' : 'Edit Email';
+            document.getElementById('editFieldLabel').textContent = isName ? 'Full Name' : 'Email Address';
+            const input = document.getElementById('editFieldInput');
+            input.value = currentValue;
+            input.type = isName ? 'text' : 'email';
+            openModal('editProfileModal');
+            setTimeout(() => input.focus(), 100);
+        };
 
-                    const fileNameSpan = successDiv.querySelector('span');
-                    if (fileNameSpan) {
-                        fileNameSpan.textContent = file.name;
-                    }
-                    zone.classList.add('border-green-500', 'bg-green-50');
-                    zone.classList.remove('border-gray-300');
-                    successDiv.classList.remove('hidden');
-                }
+        document.getElementById('editProfileForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const value = document.getElementById('editFieldInput').value.trim();
+            if (!value) return;
+
+            if (editingField === 'name') {
+                document.getElementById('profileNameDisplay').textContent = value;
+                localStorage.setItem('profileName', value);
+            } else {
+                document.getElementById('profileEmailDisplay').textContent = value;
+                localStorage.setItem('profileEmail', value);
+            }
+            closeModal('editProfileModal');
+            showToast('Profile updated!', 'success', 2000, 'check_circle');
+        });
+
+        const uploadZones = document.querySelectorAll('.upload-zone');
+        const uploadedDocs = {};
+
+        const updateKYCProgress = () => {
+            const count = Object.keys(uploadedDocs).length;
+            document.getElementById('kycProgressText').textContent = `${count} of 3 documents uploaded`;
+            const pill = document.getElementById('kycProgressPill');
+            if (count === 3) {
+                pill.style.background = 'linear-gradient(135deg, rgba(121,182,25,0.15), rgba(121,182,25,0.1))';
+                pill.style.borderColor = 'rgba(121,182,25,0.3)';
+                pill.style.color = '#4d8a0a';
+            } else {
+                pill.style.background = '';
+                pill.style.borderColor = '';
+                pill.style.color = '';
+            }
+        };
+
+        uploadZones.forEach(zone => {
+            const input = zone.querySelector('input[type="file"]');
+            const thumbContainer = zone.querySelector('.thumb-container');
+            const thumbImg = zone.querySelector('.file-thumb img');
+            const uploadPrompt = zone.querySelector('.upload-prompt');
+            const fileName = zone.querySelector('.file-name');
+            const removeBtn = zone.querySelector('.remove-btn');
+            const docKey = zone.dataset.doc;
+
+            zone.addEventListener('click', (e) => {
+                if (!e.target.closest('.remove-btn')) input.click();
             });
 
-            const removeBtn = successDiv.querySelector('.remove-file');
-            if (removeBtn) {
-                removeBtn.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    fileInput.value = '';
-                    zone.classList.remove('border-green-500', 'bg-green-50');
-                    zone.classList.add('border-gray-300');
-                    successDiv.classList.add('hidden');
-                });
-            }
-        });
+            input.addEventListener('change', () => {
+                const file = input.files[0];
+                if (!file) return;
 
-        document.getElementById('kycForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const success = document.getElementById('kycSuccess');
-            success.classList.remove('hidden');
-            success.scrollIntoView({ behavior: 'smooth' });
+                const allowed = ['image/jpeg', 'image/jpg', 'image/png', 'application/pdf'];
+                if (!allowed.includes(file.type)) {
+                    showToast('Only JPG, PNG, or PDF files allowed.', 'error');
+                    input.value = '';
+                    return;
+                }
+                if (file.size > 5 * 1024 * 1024) {
+                    showToast('File size must be under 5MB.', 'error');
+                    input.value = '';
+                    return;
+                }
+
+                fileName.textContent = `✓ ${file.name}`;
+                fileName.classList.remove('hidden');
+
+                if (file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onload = () => {
+                        thumbImg.src = reader.result;
+                        thumbContainer.classList.remove('hidden');
+                        uploadPrompt.classList.add('hidden');
+                    };
+                    reader.readAsDataURL(file);
+                } else {
+                    thumbImg.src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23f3f4f6"/><text x="50" y="55" font-size="40" text-anchor="middle" fill="%23b31602">📄</text></svg>';
+                    thumbContainer.classList.remove('hidden');
+                    uploadPrompt.classList.add('hidden');
+                }
+
+                zone.classList.add('border-green-500', 'bg-green-50');
+                zone.classList.remove('border-gray-300', 'bg-gray-50');
+                uploadedDocs[docKey] = file;
+                updateKYCProgress();
+                showToast('Document uploaded!', 'success', 2000, 'check_circle');
+            });
+
+            removeBtn?.addEventListener('click', (e) => {
+                e.stopPropagation();
+                input.value = '';
+                thumbContainer.classList.add('hidden');
+                uploadPrompt.classList.remove('hidden');
+                fileName.classList.add('hidden');
+                zone.classList.remove('border-green-500', 'bg-green-50');
+                zone.classList.add('border-gray-300', 'bg-gray-50');
+                delete uploadedDocs[docKey];
+                updateKYCProgress();
+                showToast('Document removed', 'info', 1500);
+            });
         });
     </script>
-
 </body>
 </html>

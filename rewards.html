@@ -7,44 +7,43 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet" />
-    <!-- Google Material Symbols - Only loading the icons we need -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0&icon_names=account_balance_wallet,celebration,check,check_circle,emoji_events,flag,rate_review,rocket_launch,sports_esports,star" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0&icon_names=account_balance_wallet,card_giftcard,celebration,check,check_circle,clock,emoji_events,error,flag,front_hand,info,local_activity,payments,rate_review,rocket_launch,sports_esports,star,warning" rel="stylesheet">
     <link href="src/css/style.css" rel="stylesheet" />
     <style>
         .font-inter { font-family: 'Inter', sans-serif; }
         .font-york { font-family: 'York Grot', 'Inter', sans-serif; }
+        html { scroll-padding-top: 90px; }
     </style>
 </head>
-<body>
-    <nav class="bg-gradient-to-r from-[#001E82] to-[#0c31AC] py-3 sticky top-0 z-50">
+<body class="bg-[#f8f9fa]">
+    <nav class="bg-gradient-to-r from-[#001E82] to-[#0c31AC] py-3 sticky top-0 z-50 shadow-md">
         <div class="container mx-auto px-4">
             <div class="flex items-center justify-between">
-                <button class="text-white text-2xl" id="sidebarToggle">
+                <button class="text-white text-2xl hover:scale-110 transition-transform" id="sidebarToggle" aria-label="Open menu">
                     <i class="bi bi-list"></i>
                 </button>
                 <a href="index.html" class="flex items-center gap-2">
                     <img src="./src/images/logo.png" alt="UniRewards" class="h-8 w-auto" />
                     <span class="text-white font-bold text-lg font-york hidden md:inline">UniRewards</span>
                 </a>
-                <button class="text-white text-2xl">
+                <a href="profile.html" class="text-white text-2xl hover:scale-110 transition-transform" aria-label="Profile">
                     <i class="bi bi-person-circle"></i>
-                </button>
+                </a>
             </div>
         </div>
     </nav>
 
-    <div class="sidebar fixed top-0 left-0 h-full w-72 bg-white shadow-2xl z-50 transform -translate-x-full transition-transform duration-300" id="sidebar">
+    <div class="sidebar fixed top-0 left-0 h-full w-72 bg-white shadow-2xl z-50 transform -translate-x-full" id="sidebar">
         <div class="p-6 border-b border-gray-100">
             <div class="flex items-center justify-between">
                 <img src="./src/images/logo.png" alt="UniRewards" class="h-10 w-auto" />
-                <button class="text-2xl text-gray-500" id="sidebarClose">
+                <button class="text-2xl text-gray-500 hover:text-gray-700" id="sidebarClose" aria-label="Close menu">
                     <i class="bi bi-x"></i>
                 </button>
             </div>
         </div>
-
         <nav class="p-4">
             <ul class="space-y-1">
                 <li>
@@ -53,35 +52,30 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-50 transition">
+                    <a href="my-rewards.html" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-50 transition">
                         <i class="bi bi-gift-fill"></i> My Rewards
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-50 transition">
+                    <a href="stickers.html" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-50 transition">
                         <i class="bi bi-stars"></i> Stickers
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-50 transition">
-                        <i class="bi bi-ticket-perforated"></i> Scratch Cards
+                    <a href="scratch-cards.html" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-50 transition">
+                        <i class="bi bi-ticket-perforated-fill"></i> Scratch Cards
                     </a>
                 </li>
                 <li>
                     <a href="profile.html" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-50 transition">
-                        <i class="bi bi-person"></i> Profile & KYC
+                        <i class="bi bi-person-fill"></i> Profile & KYC
                     </a>
                 </li>
-                <li class="border-t border-gray-100 pt-4 mt-4">
-                    <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-50 transition">
-                        <i class="bi bi-file-text"></i> Terms & Conditions
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-50 transition">
-                        <i class="bi bi-envelope"></i> Contact Us
-                    </a>
-                </li>
+                <li><a href="help.html" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-50 transition"><i class="bi bi-question-circle-fill"></i> Help Center</a></li>
+                <li><a href="faq.html" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-50 transition"><i class="bi bi-info-circle-fill"></i> FAQ</a></li>
+                <li><a href="terms.html" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-50 transition"><i class="bi bi-file-text-fill"></i> Terms & Conditions</a></li>
+                <li><a href="privacy.html" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-50 transition"><i class="bi bi-shield-lock-fill"></i> Privacy Policy</a></li>
+                <li><a href="contact.html" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-50 transition"><i class="bi bi-envelope-fill"></i> Contact Us</a></li>
                 <li>
                     <a href="index.html" class="flex items-center gap-3 px-4 py-3 rounded-lg text-red-500 hover:bg-red-50 transition">
                         <i class="bi bi-box-arrow-right"></i> Logout
@@ -89,130 +83,254 @@
                 </li>
             </ul>
         </nav>
-
-        <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-r from-[#001E82]/5 to-[#0c31AC]/5">
-            <p class="text-xs text-gray-400 text-center">UniRewards v2.0</p>
-        </div>
     </div>
     <div class="sidebar-overlay fixed inset-0 bg-black/50 z-40 hidden" id="sidebarOverlay"></div>
-    <main class="container mx-auto px-4 py-8">
 
+    <main class="container mx-auto px-4 py-8">
         <div class="bg-gradient-to-r from-[#361714] to-[#1E1412] rounded-2xl p-8 mb-8 text-white relative overflow-hidden">
             <div class="absolute top-0 right-0 w-64 h-64 bg-[#EAA221]/10 rounded-full -mr-16 -mt-16"></div>
             <div class="relative z-10">
-                <p class="text-sm text-[#EAA221] font-semibold"><span class="material-symbols-outlined icon-lg text-gold">celebration</span> Welcome Back!</p>
+                <p class="text-sm text-[#EAA221] font-semibold flex items-center gap-2">
+                    <span class="material-symbols-outlined icon-lg text-gold">celebration</span> Welcome Back!
+                </p>
                 <h1 class="text-3xl md:text-4xl font-bold font-york mt-1">You've Earned <span class="text-[#FFD200]">5 Rewards</span></h1>
                 <p class="text-gray-300 mt-2 max-w-md">Continue engaging to unlock more prizes and achievements.</p>
                 <div class="flex flex-wrap gap-3 mt-4">
-                    <span class="px-3 py-1 bg-[#EAA221]/20 rounded-full text-xs"><span class="material-symbols-outlined text-gold text-md">star</span> 500 Points</span>
-                    <span class="px-3 py-1 bg-green-500/20 rounded-full text-xs"><span class="material-symbols-outlined text-green">check_circle</span> 2 Stickers Collected</span>
-                    <span class="px-3 py-1 bg-blue-500/20 rounded-full text-xs"><span class="material-symbols-outlined text-gold">flag</span> 3/5 Challenges Done</span>
+                    <span class="inline-flex items-center gap-1 px-3 py-1 bg-[#EAA221]/20 rounded-full text-xs">
+                        <span class="material-symbols-outlined text-gold" style="font-size:16px">star</span> 500 Points
+                    </span>
+                    <span class="inline-flex items-center gap-1 px-3 py-1 bg-green-500/20 rounded-full text-xs">
+                        <span class="material-symbols-outlined text-green" style="font-size:16px">check_circle</span> <span id="bannerStickerCount">2 Stickers Collected</span>
+                    </span>
+                    <span class="inline-flex items-center gap-1 px-3 py-1 bg-blue-500/20 rounded-full text-xs">
+                        <span class="material-symbols-outlined text-gold" style="font-size:16px">flag</span> 3/5 Challenges Done
+                    </span>
                 </div>
             </div>
         </div>
 
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-            <div class="bg-white rounded-xl p-5 shadow-sm border border-gray-100 text-center">
-                <p class="text-3xl font-bold text-[#001E82]">12</p>
-                <p class="text-xs text-gray-500">Challenges Completed</p>
+            <div class="stat-card group relative bg-white rounded-2xl p-5 shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-all duration-300">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-[#001E82]/5 rounded-full -mr-8 -mt-8 group-hover:scale-125 transition-transform duration-500"></div>
+                <div class="relative">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-[#001E82] to-[#0c31AC] flex items-center justify-center shadow-md">
+                            <span class="material-symbols-outlined text-white" style="font-size:22px">emoji_events</span>
+                        </div>
+                        <span class="text-[10px] font-bold text-[#79B619] bg-[#79B619]/10 px-2 py-0.5 rounded-full">+3 this week</span>
+                    </div>
+                    <p class="text-3xl font-bold text-[#001E82]" data-count="12">0</p>
+                    <p class="text-xs text-gray-500 mt-1">Challenges Completed</p>
+                    <div class="mt-3 h-1 w-full bg-gray-100 rounded-full overflow-hidden">
+                        <div class="h-full w-3/4 bg-gradient-to-r from-[#001E82] to-[#0c31AC] rounded-full animate-progress" data-progress="75"></div>
+                    </div>
+                </div>
             </div>
-            <div class="bg-white rounded-xl p-5 shadow-sm border border-gray-100 text-center">
-                <p class="text-3xl font-bold text-[#EAA221]">8</p>
-                <p class="text-xs text-gray-500">Coupons Unlocked</p>
+
+            <div class="stat-card group relative bg-white rounded-2xl p-5 shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-all duration-300">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-[#EAA221]/5 rounded-full -mr-8 -mt-8 group-hover:scale-125 transition-transform duration-500"></div>
+                <div class="relative">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-[#EAA221] to-[#EFC46E] flex items-center justify-center shadow-md">
+                            <span class="material-symbols-outlined text-white" style="font-size:22px">local_activity</span>
+                        </div>
+                        <span class="text-[10px] font-bold text-[#EAA221] bg-[#EAA221]/10 px-2 py-0.5 rounded-full">2 new</span>
+                    </div>
+                    <p class="text-3xl font-bold text-[#EAA221]" data-count="8">0</p>
+                    <p class="text-xs text-gray-500 mt-1">Coupons Unlocked</p>
+                    <div class="mt-3 h-1 w-full bg-gray-100 rounded-full overflow-hidden">
+                        <div class="h-full w-1/2 bg-gradient-to-r from-[#EFC46E] to-[#EAA221] rounded-full animate-progress" data-progress="50"></div>
+                    </div>
+                </div>
             </div>
-            <div class="bg-white rounded-xl p-5 shadow-sm border border-gray-100 text-center">
-                <p class="text-3xl font-bold text-[#79B619]">5</p>
-                <p class="text-xs text-gray-500">Rewards Earned</p>
+
+            <div class="stat-card group relative bg-white rounded-2xl p-5 shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-all duration-300">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-[#79B619]/5 rounded-full -mr-8 -mt-8 group-hover:scale-125 transition-transform duration-500"></div>
+                <div class="relative">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-[#79B619] to-[#4d8a0a] flex items-center justify-center shadow-md">
+                            <span class="material-symbols-outlined text-white" style="font-size:22px">card_giftcard</span>
+                        </div>
+                        <span class="text-[10px] font-bold text-[#79B619] bg-[#79B619]/10 px-2 py-0.5 rounded-full">1 pending</span>
+                    </div>
+                    <p class="text-3xl font-bold text-[#79B619]" data-count="5">0</p>
+                    <p class="text-xs text-gray-500 mt-1">Rewards Earned</p>
+                    <div class="mt-3 h-1 w-full bg-gray-100 rounded-full overflow-hidden">
+                        <div class="h-full w-2/3 bg-gradient-to-r from-[#79B619] to-[#4d8a0a] rounded-full animate-progress" data-progress="66"></div>
+                    </div>
+                </div>
             </div>
-            <div class="bg-white rounded-xl p-5 shadow-sm border border-gray-100 text-center">
-                <p class="text-3xl font-bold text-[#b31602]">₹500</p>
-                <p class="text-xs text-gray-500">Cashback Earned</p>
+
+            <div class="stat-card group relative bg-white rounded-2xl p-5 shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-all duration-300">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-[#b31602]/5 rounded-full -mr-8 -mt-8 group-hover:scale-125 transition-transform duration-500"></div>
+                <div class="relative">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-[#b31602] to-[#8a1100] flex items-center justify-center shadow-md">
+                            <span class="material-symbols-outlined text-white" style="font-size:22px">payments</span>
+                        </div>
+                        <span class="text-[10px] font-bold text-[#b31602] bg-[#b31602]/10 px-2 py-0.5 rounded-full">₹100 this week</span>
+                    </div>
+                    <p class="text-3xl font-bold text-[#b31602]">₹500</p>
+                    <p class="text-xs text-gray-500 mt-1">Cashback Earned</p>
+                    <div class="mt-3 h-1 w-full bg-gray-100 rounded-full overflow-hidden">
+                        <div class="h-full w-4/5 bg-gradient-to-r from-[#b31602] to-[#8a1100] rounded-full animate-progress" data-progress="80"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden mb-8">
+            <div class="bg-gradient-to-r from-[#001E82] to-[#0c31AC] px-6 py-4 flex items-center justify-between text-white">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-white/10 backdrop-blur flex items-center justify-center">
+                        <i class="bi bi-stars text-[#FFD200] text-lg"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-lg font-bold font-york leading-tight">Sticker Album</h2>
+                        <p class="text-[11px] text-white/60 uppercase tracking-widest">Series A · 2026 Edition</p>
+                    </div>
+                </div>
+                <div class="text-right">
+                    <p class="text-2xl font-bold font-york leading-tight" id="stickerCollectedCountWrap">
+                        <span id="stickerCollectedCount">2</span><span class="text-white/40 text-base">/5</span>
+                    </p>
+                    <p class="text-[10px] text-white/60 uppercase tracking-widest">Collected</p>
+                </div>
+            </div>
+
+            <div class="album-sheet relative p-6 md:p-8 pl-12 md:pl-14">
+                <div class="album-binding hidden md:flex">
+                    <span></span><span></span><span></span><span></span><span></span><span></span>
+                </div>
+
+                <div class="relative z-10">
+                    <div class="flex items-center justify-between mb-4 pb-3 border-b-2 border-dashed border-gray-300">
+                        <div class="flex items-center gap-2">
+                            <span class="material-symbols-outlined text-[#EAA221]" style="font-size:18px">star</span>
+                            <p class="text-xs font-bold uppercase tracking-widest text-[#001E82]">Collection Sheet</p>
+                        </div>
+                        <p class="text-[10px] uppercase tracking-widest text-gray-400 font-semibold" id="progressLabel">2 of 5 collected — 3 more</p>
+                    </div>
+
+                    <div class="grid grid-cols-3 sm:grid-cols-5 gap-3 md:gap-4" id="stickerGrid">
+                        <div class="sticker-card collected border-4 border-[#79B619] rounded-xl overflow-hidden cursor-pointer" style="--tilt: -2deg; transform: rotate(-2deg);">
+                            <span class="corner-stamp">★ 2026</span>
+                            <img src="https://picsum.photos/100/100?random=30" alt="Sticker" class="w-full aspect-square object-cover" loading="lazy" />
+                            <div class="absolute bottom-0 left-0 right-0 bg-[#79B619] text-white text-center text-[10px] py-1 flex items-center justify-center gap-1 font-semibold uppercase tracking-wider">
+                                <span class="material-symbols-outlined" style="font-size:11px">check_circle</span> Collected
+                            </div>
+                        </div>
+
+                        <div class="sticker-card collected border-4 border-[#79B619] rounded-xl overflow-hidden cursor-pointer" style="--tilt: 3deg; transform: rotate(3deg);">
+                            <span class="corner-stamp">★ 2026</span>
+                            <img src="https://picsum.photos/100/100?random=31" alt="Sticker" class="w-full aspect-square object-cover" loading="lazy" />
+                            <div class="absolute bottom-0 left-0 right-0 bg-[#79B619] text-white text-center text-[10px] py-1 flex items-center justify-center gap-1 font-semibold uppercase tracking-wider">
+                                <span class="material-symbols-outlined" style="font-size:11px">check_circle</span> Collected
+                            </div>
+                        </div>
+
+                        <div class="sticker-card empty border-4 rounded-xl overflow-hidden cursor-pointer">
+                            <span class="corner-stamp">Slot 03</span>
+                            <div class="w-full aspect-square flex flex-col items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100">
+                                <span class="text-2xl text-slate-300 font-york font-bold">?</span>
+                                <span class="text-[8px] uppercase tracking-widest text-slate-400 mt-1 font-semibold">Missing</span>
+                            </div>
+                            <div class="absolute bottom-0 left-0 right-0 bg-slate-200 text-slate-500 text-center text-[10px] py-1 flex items-center justify-center gap-1 font-semibold uppercase tracking-wider">
+                                <i class="bi bi-plus-circle" style="font-size:10px"></i> Add
+                            </div>
+                        </div>
+
+                        <div class="sticker-card empty border-4 rounded-xl overflow-hidden cursor-pointer">
+                            <span class="corner-stamp">Slot 04</span>
+                            <div class="w-full aspect-square flex flex-col items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100">
+                                <span class="text-2xl text-slate-300 font-york font-bold">?</span>
+                                <span class="text-[8px] uppercase tracking-widest text-slate-400 mt-1 font-semibold">Missing</span>
+                            </div>
+                            <div class="absolute bottom-0 left-0 right-0 bg-slate-200 text-slate-500 text-center text-[10px] py-1 flex items-center justify-center gap-1 font-semibold uppercase tracking-wider">
+                                <i class="bi bi-plus-circle" style="font-size:10px"></i> Add
+                            </div>
+                        </div>
+
+                        <div class="sticker-card empty border-4 rounded-xl overflow-hidden cursor-pointer">
+                            <span class="corner-stamp">Slot 05</span>
+                            <div class="w-full aspect-square flex flex-col items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100">
+                                <span class="text-2xl text-slate-300 font-york font-bold">?</span>
+                                <span class="text-[8px] uppercase tracking-widest text-slate-400 mt-1 font-semibold">Missing</span>
+                            </div>
+                            <div class="absolute bottom-0 left-0 right-0 bg-slate-200 text-slate-500 text-center text-[10px] py-1 flex items-center justify-center gap-1 font-semibold uppercase tracking-wider">
+                                <i class="bi bi-plus-circle" style="font-size:10px"></i> Add
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-5">
+                        <div class="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
+                            <div id="stickerProgress" class="h-2 rounded-full bg-gradient-to-r from-[#001E82] to-[#79B619] transition-all duration-700" style="width: 40%;"></div>
+                        </div>
+                        <div class="mt-3 pt-3 border-t-2 border-dashed border-gray-200 flex items-center justify-between text-[10px] uppercase tracking-widest text-gray-400 font-semibold">
+                            <span>Page 1 of 1 · Series A</span>
+                            <span>Tap empty slot to paste</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="stickerModal" class="modal hidden fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+            <div class="bg-white rounded-2xl p-6 max-w-md w-full shadow-2xl relative">
+                <button class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-2xl" data-close="stickerModal" aria-label="Close">&times;</button>
+                <h3 class="text-xl font-bold text-[#001E82] mb-4">Collect Sticker</h3>
+                <form id="stickerForm" class="space-y-4">
+                    <div class="upload-zone border-2 border-dashed border-gray-300 rounded-xl p-6 text-center cursor-pointer bg-gray-50 transition">
+                        <input type="file" id="stickerUpload" class="hidden" accept=".jpg,.jpeg,.png">
+                        <svg class="mx-auto h-10 w-10 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" /></svg>
+                        <p class="text-sm text-gray-600">Upload sticker photo</p>
+                        <p class="file-name text-sm font-semibold text-[#001E82] mt-2 hidden"></p>
+                    </div>
+                    <button type="submit" class="btn-primary w-full py-3 rounded-lg font-bold">Collect Sticker</button>
+                </form>
             </div>
         </div>
 
         <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-8">
-            <div class="flex items-center justify-between mb-4">
-                <h2 class="text-xl font-bold font-york text-[#001E82]">
-                    <i class="bi bi-stars text-[#EAA221]"></i> Sticker Collection
+            <div class="flex items-center justify-between mb-4 flex-wrap gap-2">
+                <h2 class="text-xl font-bold font-york text-[#001E82] flex items-center gap-2">
+                    <i class="bi bi-ticket-perforated text-[#EAA221]"></i> Scratch Cards
                 </h2>
-                <span class="text-sm text-gray-500">2/5 Collected</span>
+                <button class="reset-scratch-btn text-xs font-semibold text-[#001E82] hover:text-[#EAA221] transition inline-flex items-center gap-1">
+                    <i class="bi bi-arrow-counterclockwise"></i> Reset
+                </button>
             </div>
-
-            <div class="w-full bg-gray-200 rounded-full h-2 mb-6">
-                <div class="h-2 rounded-full bg-gradient-to-r from-[#001E82] to-[#0c31AC]" style="width: 40%;"></div>
-            </div>
-
-            <div class="grid grid-cols-5 gap-3">
-                <div class="sticker-card relative border-4 border-[#79B619] rounded-xl overflow-hidden cursor-pointer">
-                    <img src="https://picsum.photos/100/100?random=30" alt="Sticker" class="w-full aspect-square object-cover" />
-                    <div class="absolute bottom-0 left-0 right-0 bg-[#79B619] text-white text-center text-xs py-0.5"><span class="material-symbols-outlined text-white text-md">check_circle</span></div>
-                </div>
-
-                <div class="sticker-card relative border-4 border-[#79B619] rounded-xl overflow-hidden cursor-pointer">
-                    <img src="https://picsum.photos/100/100?random=31" alt="Sticker" class="w-full aspect-square object-cover" />
-                    <div class="absolute bottom-0 left-0 right-0 bg-[#79B619] text-white text-center text-xs py-0.5"><span class="material-symbols-outlined text-white text-md">check_circle</span></div>
-                </div>
-
-                <div class="sticker-card relative border-4 border-gray-300 rounded-xl overflow-hidden cursor-pointer hover:opacity-70 transition">
-                    <img src="https://picsum.photos/100/100?random=32" alt="Sticker" class="w-full aspect-square object-cover opacity-50" />
-                    <div class="absolute inset-0 flex items-center justify-center bg-black/40">
-                        <i class="bi bi-camera text-white text-2xl"></i>
+            <p class="text-xs text-gray-500 mb-4">Hold and drag your cursor to scratch the card — reveal the prize underneath!</p>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div class="scratch-card relative h-40 rounded-xl overflow-hidden shadow-lg" data-prize="₹50 Cashback">
+                    <div class="absolute inset-0 bg-gradient-to-br from-orange-400 to-orange-600 flex flex-col items-center justify-center text-white">
+                        <div class="text-3xl font-bold">₹50</div>
+                        <div class="text-xs uppercase tracking-wider">Bronze Prize</div>
                     </div>
+                    <canvas class="scratch-canvas absolute inset-0 w-full h-full cursor-grab active:cursor-grabbing" data-label="Bronze"></canvas>
                 </div>
-
-                <div class="sticker-card relative border-4 border-gray-300 rounded-xl overflow-hidden cursor-pointer hover:opacity-70 transition">
-                    <img src="https://picsum.photos/100/100?random=33" alt="Sticker" class="w-full aspect-square object-cover opacity-50" />
-                    <div class="absolute inset-0 flex items-center justify-center bg-black/40">
-                        <i class="bi bi-camera text-white text-2xl"></i>
+                <div class="scratch-card relative h-40 rounded-xl overflow-hidden shadow-lg" data-prize="₹100 Voucher">
+                    <div class="absolute inset-0 bg-gradient-to-br from-gray-300 to-gray-500 flex flex-col items-center justify-center text-white">
+                        <div class="text-3xl font-bold">₹100</div>
+                        <div class="text-xs uppercase tracking-wider">Silver Prize</div>
                     </div>
+                    <canvas class="scratch-canvas absolute inset-0 w-full h-full cursor-grab active:cursor-grabbing" data-label="Silver"></canvas>
                 </div>
-
-                <div class="sticker-card relative border-4 border-gray-300 rounded-xl overflow-hidden cursor-pointer hover:opacity-70 transition">
-                    <img src="https://picsum.photos/100/100?random=34" alt="Sticker" class="w-full aspect-square object-cover opacity-50" />
-                    <div class="absolute inset-0 flex items-center justify-center bg-black/40">
-                        <i class="bi bi-camera text-white text-2xl"></i>
+                <div class="scratch-card relative h-40 rounded-xl overflow-hidden shadow-lg" data-prize="₹200 Cashback">
+                    <div class="absolute inset-0 bg-gradient-to-br from-yellow-400 to-yellow-600 flex flex-col items-center justify-center text-white">
+                        <div class="text-3xl font-bold">₹200</div>
+                        <div class="text-xs uppercase tracking-wider">Gold Prize</div>
                     </div>
-                </div>
-            </div>
-            <p class="text-xs text-gray-400 mt-3 text-center">Click on missing stickers to upload and collect</p>
-        </div>
-
-
-        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-8">
-            <h2 class="text-xl font-bold font-york text-[#001E82] mb-4">
-                <i class="bi bi-ticket-perforated text-[#EAA221]"></i> Scratch Cards
-            </h2>
-            <div class="grid grid-cols-3 gap-4">
-                <div class="scratch-card relative h-40 bg-gradient-to-br from-orange-400 to-orange-600 rounded-xl flex items-center justify-center cursor-pointer overflow-hidden shadow-lg">
-                    <div class="scratch-cover absolute inset-0 bg-gray-400 flex items-center justify-center text-white font-bold z-10 transition-opacity duration-300 text-center">Tap to scratch</div>
-                    <div class="text-white text-center z-0">
-                        <div class="text-3xl font-bold">B</div>
-                        <div class="text-xs uppercase tracking-wider">Bronze</div>
-                    </div>
-                </div>
-                <div class="scratch-card relative h-40 bg-gradient-to-br from-gray-300 to-gray-500 rounded-xl flex items-center justify-center cursor-pointer overflow-hidden shadow-lg">
-                    <div class="scratch-cover absolute inset-0 bg-gray-400 flex items-center justify-center text-white font-bold z-10 transition-opacity duration-300 text-center">Tap to scratch</div>
-                    <div class="text-white text-center z-0">
-                        <div class="text-3xl font-bold">S</div>
-                        <div class="text-xs uppercase tracking-wider">Silver</div>
-                    </div>
-                </div>
-                <div class="scratch-card relative h-40 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-xl flex items-center justify-center cursor-pointer overflow-hidden shadow-lg">
-                    <div class="scratch-cover absolute inset-0 bg-gray-400 flex items-center justify-center text-white font-bold z-10 transition-opacity duration-300 text-center">Tap to scratch</div>
-                    <div class="text-white text-center z-0">
-                        <div class="text-3xl font-bold">G</div>
-                        <div class="text-xs uppercase tracking-wider">Gold</div>
-                    </div>
+                    <canvas class="scratch-canvas absolute inset-0 w-full h-full cursor-grab active:cursor-grabbing" data-label="Gold"></canvas>
                 </div>
             </div>
         </div>
-
 
         <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
-            <h2 class="text-xl font-bold font-york text-[#001E82] mb-4">
+            <h2 class="text-xl font-bold font-york text-[#001E82] mb-4 flex items-center gap-2">
                 <i class="bi bi-gift-fill text-[#EAA221]"></i> Available Rewards
             </h2>
-
             <div class="space-y-3">
                 <div class="flex items-center justify-between p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition cursor-pointer">
                     <div class="flex items-center gap-4">
@@ -224,11 +342,8 @@
                             <p class="text-xs text-gray-500">UPI Transfer</p>
                         </div>
                     </div>
-                    <button class="claim-reward-btn px-4 py-1.5 bg-gradient-to-r from-[#EFC46E] to-[#EAA221] text-black rounded-full text-xs font-bold">
-                        Claim
-                    </button>
+                    <button class="claim-reward-btn px-4 py-1.5 bg-gradient-to-r from-[#EFC46E] to-[#EAA221] text-black rounded-full text-xs font-bold hover:scale-105 transition-transform">Claim</button>
                 </div>
-
                 <div class="flex items-center justify-between p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition cursor-pointer">
                     <div class="flex items-center gap-4">
                         <div class="w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center">
@@ -239,11 +354,8 @@
                             <p class="text-xs text-gray-500">₹100 Value</p>
                         </div>
                     </div>
-                    <button class="claim-reward-btn px-4 py-1.5 bg-gradient-to-r from-[#EFC46E] to-[#EAA221] text-black rounded-full text-xs font-bold">
-                        Claim
-                    </button>
+                    <button class="claim-reward-btn px-4 py-1.5 bg-gradient-to-r from-[#EFC46E] to-[#EAA221] text-black rounded-full text-xs font-bold hover:scale-105 transition-transform">Claim</button>
                 </div>
-
                 <div class="flex items-center justify-between p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition cursor-pointer">
                     <div class="flex items-center gap-4">
                         <div class="w-12 h-12 rounded-full bg-orange-500/10 flex items-center justify-center">
@@ -254,11 +366,8 @@
                             <p class="text-xs text-gray-500">Limited Stock</p>
                         </div>
                     </div>
-                    <button class="claim-reward-btn px-4 py-1.5 bg-gradient-to-r from-[#EFC46E] to-[#EAA221] text-black rounded-full text-xs font-bold">
-                        Claim
-                    </button>
+                    <button class="claim-reward-btn px-4 py-1.5 bg-gradient-to-r from-[#EFC46E] to-[#EAA221] text-black rounded-full text-xs font-bold hover:scale-105 transition-transform">Claim</button>
                 </div>
-
                 <div class="flex items-center justify-between p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition cursor-pointer">
                     <div class="flex items-center gap-4">
                         <div class="w-12 h-12 rounded-full bg-purple-500/10 flex items-center justify-center">
@@ -269,94 +378,179 @@
                             <p class="text-xs text-gray-500">KYC Required</p>
                         </div>
                     </div>
-                    <button class="claim-reward-btn px-4 py-1.5 bg-gradient-to-r from-[#EFC46E] to-[#EAA221] text-black rounded-full text-xs font-bold">
-                        Claim
-                    </button>
+                    <button class="claim-reward-btn px-4 py-1.5 bg-gradient-to-r from-[#EFC46E] to-[#EAA221] text-black rounded-full text-xs font-bold hover:scale-105 transition-transform">Claim</button>
                 </div>
             </div>
         </div>
-
     </main>
 
     <div class="modal fixed inset-0 bg-black/60 flex items-center justify-center z-50 hidden" id="scratchModal">
         <div class="bg-white rounded-2xl p-8 max-w-sm w-full mx-4 text-center relative">
-            <button class="absolute top-4 right-4 text-gray-400 hover:text-gray-600" id="modalClose">
+            <button class="absolute top-4 right-4 text-gray-400 hover:text-gray-600" data-close="scratchModal" aria-label="Close">
                 <i class="bi bi-x text-2xl"></i>
             </button>
-
             <div class="w-20 h-20 rounded-full bg-gradient-to-r from-[#EFC46E] to-[#EAA221] flex items-center justify-center text-white text-3xl mx-auto mb-4">
                 <i class="bi bi-gift-fill"></i>
             </div>
-
-            <h3 class="text-2xl font-bold font-york text-[#001E82]"><span class="material-symbols-outlined icon-xl text-gold">celebration</span> Congratulations!</h3>
+            <h3 class="text-2xl font-bold font-york text-[#001E82] flex items-center justify-center gap-1">
+                <span class="material-symbols-outlined icon-xl text-gold">celebration</span> Congratulations!
+            </h3>
             <p class="text-gray-600 mt-2">You've won a</p>
             <p class="text-3xl font-bold text-[#EAA221] mt-2">₹100 Cashback</p>
             <p class="text-sm text-gray-400 mt-1">Check your rewards dashboard for details</p>
-
-            <button class="mt-6 px-8 py-3 bg-[#001E82] text-white rounded-full font-bold hover:bg-[#0c31AC] transition" id="modalClaimBtn">
+            <button class="mt-6 px-8 py-3 bg-[#001E82] text-white rounded-full font-bold hover:bg-[#0c31AC] transition inline-flex items-center gap-2" onclick="closeModal('scratchModal'); showToast('Reward claimed!', 'success');">
                 Claim Now <span class="material-symbols-outlined icon-sm">celebration</span>
             </button>
         </div>
     </div>
 
     <div id="congratsModal" class="modal hidden fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm">
-        <div class="bg-white rounded-2xl p-8 max-w-sm w-full text-center shadow-2xl transform transition-all scale-100">
-            <div class="text-6xl mb-4 animate-bounce">
-                <span class="material-symbols-outlined icon-xl text-gold">celebration</span>
+        <div class="bg-white rounded-2xl p-8 max-w-sm w-full text-center shadow-2xl">
+            <div class="mb-4 flex justify-center">
+                <span class="material-symbols-outlined icon-xl text-gold animate-pulse-slow">celebration</span>
             </div>
             <h3 class="text-2xl font-bold text-[#001E82] mb-2">Congratulations!</h3>
             <p class="text-gray-600 mb-6">You've won a <span class="font-bold text-[#EAA221] text-lg">₹100 Cashback</span>.<br>Check your rewards dashboard for details.</p>
-            <button onclick="closeModal('congratsModal')" class="btn-primary w-full py-3 rounded-lg font-bold">Claim Now</button>
+            <button onclick="closeModal('congratsModal'); showToast('Reward claimed successfully!', 'success');" class="btn-primary w-full py-3 rounded-lg font-bold">Claim Now</button>
         </div>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="src/js/script.js"></script>
     <script>
-        const sidebar = document.getElementById('sidebar');
-        const sidebarOverlay = document.getElementById('sidebarOverlay');
-        const sidebarToggle = document.getElementById('sidebarToggle');
-        const sidebarClose = document.getElementById('sidebarClose');
-
-        function openSidebar() {
-            sidebar.classList.remove('-translate-x-full');
-            sidebarOverlay.classList.remove('hidden');
-        }
-
-        function closeSidebar() {
-            sidebar.classList.add('-translate-x-full');
-            sidebarOverlay.classList.add('hidden');
-        }
-
-        sidebarToggle.addEventListener('click', openSidebar);
-        sidebarClose.addEventListener('click', closeSidebar);
-        sidebarOverlay.addEventListener('click', closeSidebar);
-
-        const scratchCards = document.querySelectorAll('.scratch-card');
-        const modal = document.getElementById('scratchModal');
-        const modalClose = document.getElementById('modalClose');
-        const modalClaimBtn = document.getElementById('modalClaimBtn');
-
-        scratchCards.forEach(card => {
-            card.addEventListener('click', () => {
-                modal.classList.remove('hidden');
+        window.addEventListener('load', () => {
+            document.querySelectorAll('.animate-progress').forEach(el => {
+                const pct = el.getAttribute('data-progress') || '75';
+                el.style.setProperty('--target-width', pct + '%');
             });
-        });
-
-        modalClose.addEventListener('click', () => {
-            modal.classList.add('hidden');
-        });
-
-        modalClaimBtn.addEventListener('click', () => {
-            modal.classList.add('hidden');
-            alert('Reward claimed! Check your rewards section.');
-        });
-
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.classList.add('hidden');
-            }
         });
     </script>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const grid = document.getElementById('stickerGrid');
+            if (!grid) return;
+
+            const countEl      = document.getElementById('stickerCollectedCount');
+            const progressEl   = document.getElementById('stickerProgress');
+            const progressLbl  = document.getElementById('progressLabel');
+            const bannerEl     = document.getElementById('bannerStickerCount');
+
+            const updateAlbum = () => {
+                const total     = grid.querySelectorAll('.sticker-card').length;
+                const collected = grid.querySelectorAll('.sticker-card.collected').length;
+                const pct       = (collected / total) * 100;
+
+                if (countEl)     countEl.textContent = collected;
+                if (progressEl)  progressEl.style.width = pct + '%';
+                if (progressLbl) progressLbl.textContent = collected === total
+                    ? 'Album complete! 🎉'
+                    : `${collected} of ${total} collected — ${total - collected} more`;
+                if (bannerEl)    bannerEl.textContent = `${collected} Stickers Collected`;
+            };
+            updateAlbum();
+
+            const bindEmpty = () => {
+                grid.querySelectorAll('.sticker-card.empty').forEach(card => {
+                    if (card.dataset.bound === 'true') return;
+                    card.dataset.bound = 'true';
+                    card.addEventListener('click', () => {
+                        window.__pendingStickerCard = card;
+                        openModal('stickerModal');
+                    });
+                });
+            };
+            bindEmpty();
+
+            const stickerForm = document.getElementById('stickerForm');
+            if (stickerForm) {
+                const freshForm = stickerForm.cloneNode(true);
+                stickerForm.parentNode.replaceChild(freshForm, stickerForm);
+
+                freshForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const card = window.__pendingStickerCard;
+                    if (!card) return;
+
+                    const input  = document.getElementById('stickerUpload');
+                    const file   = input?.files[0];
+                    const fileNameEl = freshForm.querySelector('.file-name');
+
+                    const finalize = (src) => {
+                        const tilt = (Math.random() * 8 - 4).toFixed(1);
+                        card.classList.remove('empty');
+                        card.classList.add('collected', 'just-collected', 'border-[#79B619]');
+                        card.style.transform = `rotate(${tilt}deg)`;
+                        card.style.setProperty('--tilt', `${tilt}deg`);
+
+                        card.innerHTML = `
+                            <span class="corner-stamp">★ 2026</span>
+                            <img src="${src}" alt="Sticker" class="w-full aspect-square object-cover" />
+                            <div class="absolute bottom-0 left-0 right-0 bg-[#79B619] text-white text-center text-[10px] py-1 flex items-center justify-center gap-1 font-semibold uppercase tracking-wider">
+                                <span class="material-symbols-outlined" style="font-size:11px">check_circle</span> Collected
+                            </div>
+                            <div class="sparkle-burst"></div>
+                        `;
+
+                        const burst = card.querySelector('.sparkle-burst');
+                        const icons = ['✨', '⭐', '🌟', '💫'];
+                        for (let i = 0; i < 8; i++) {
+                            const s = document.createElement('span');
+                            s.textContent = icons[i % icons.length];
+                            const angle = (Math.PI * 2 * i) / 8;
+                            s.style.left = '50%';
+                            s.style.top = '50%';
+                            s.style.setProperty('--dx', `${Math.cos(angle) * 55}px`);
+                            s.style.setProperty('--dy', `${Math.sin(angle) * 55}px`);
+                            s.style.animationDelay = `${i * 0.03}s`;
+                            burst.appendChild(s);
+                        }
+
+                        setTimeout(() => card.classList.remove('just-collected'), 900);
+                        updateAlbum();
+                        bindEmpty();
+                        showToast('Sticker pasted into album!', 'success', 2500, 'celebration');
+
+                        if (input) input.value = '';
+                        if (fileNameEl) fileNameEl.classList.add('hidden');
+                        window.__pendingStickerCard = null;
+
+                        const total     = grid.querySelectorAll('.sticker-card').length;
+                        const collected = grid.querySelectorAll('.sticker-card.collected').length;
+                        if (collected === total) {
+                            setTimeout(() => showToast('🎉 Album complete! ₹50 bonus unlocked!', 'success', 5000, 'celebration'), 800);
+                        }
+                    };
+
+                    if (file) {
+                        const reader = new FileReader();
+                        reader.onload = () => finalize(reader.result);
+                        reader.readAsDataURL(file);
+                    } else {
+                        finalize('https://picsum.photos/100/100?random=' + Math.floor(Math.random() * 100));
+                    }
+
+                    closeModal('stickerModal');
+                });
+
+                const freshInput = document.getElementById('stickerUpload');
+                const freshNameEl = freshForm.querySelector('.file-name');
+                freshInput?.addEventListener('change', () => {
+                    const f = freshInput.files[0];
+                    if (!f) return;
+                    if (f.size > 5 * 1024 * 1024) {
+                        showToast('File must be under 5MB', 'error');
+                        freshInput.value = '';
+                        return;
+                    }
+                    if (freshNameEl) {
+                        freshNameEl.textContent = `✓ ${f.name}`;
+                        freshNameEl.classList.remove('hidden');
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>

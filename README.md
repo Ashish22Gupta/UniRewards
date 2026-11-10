@@ -85,5 +85,3 @@ The entire experience is **client-side** — no backend required — using `loca
 | **Hosting** | Netlify |
 
 ---
-
-## 📁 Project Structure

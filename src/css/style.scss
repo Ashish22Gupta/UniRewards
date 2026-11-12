@@ -712,12 +712,12 @@ body {
 }
 
 img[loading="lazy"] {
-  opacity: 0;
+  //opacity: 0;
   transition: opacity 0.4s ease;
 }
-img[loading="lazy"].loaded {
+/*img[loading="lazy"].loaded {
   opacity: 1;
-}
+}*/
 
 @keyframes shake {
   0%,

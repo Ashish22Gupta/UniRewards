@@ -799,7 +799,8 @@ const App = {
       }, 2200);
     }
 
-    const revealSelectors = '.ranking-card, .reward-card, .challenge-card, .usp-card, .sticker-card, .scratch-card, .bg-white.rounded-2xl';
+    // const revealSelectors = '.ranking-card, .reward-card, .challenge-card, .usp-card, .sticker-card, .scratch-card, .bg-white.rounded-2xl';
+    const revealSelectors = '.ranking-card, .reward-card, .usp-card, .sticker-card, .scratch-card, .bg-white.rounded-2xl';
     document.querySelectorAll('section').forEach(section => {
       if (section.id === 'hero' || section.closest('header')) return;
       const items = section.querySelectorAll(revealSelectors);

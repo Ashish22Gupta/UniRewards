@@ -857,26 +857,12 @@ const App = {
   },
 
   initLazyImages() {
-    // Slick clones slides (infinite: true). Cloned <img> tags don't copy the
-    // JS listeners/classes, so they stayed at opacity:0 forever. Use a
-    // delegated capture listener + sweeps so every image (clones included)
-    // gets the "loaded" class.
-    const mark = (img) => img.classList.add('loaded');
-    const sweep = () => {
-      document.querySelectorAll('img[loading="lazy"]:not(.loaded)').forEach(img => {
-        if (img.complete) mark(img);
+    if ('IntersectionObserver' in window) {
+      const imgs = document.querySelectorAll('img[loading="lazy"]');
+      imgs.forEach(img => {
+        if (img.complete) img.classList.add('loaded');
+        else img.addEventListener('load', () => img.classList.add('loaded'));
       });
-    };
-    document.addEventListener('load', (e) => {
-      if (e.target.tagName === 'IMG') mark(e.target);
-    }, true);
-    document.addEventListener('error', (e) => {
-      if (e.target.tagName === 'IMG') mark(e.target);
-    }, true);
-    sweep();
-    window.addEventListener('load', sweep);
-    if (window.jQuery) {
-      jQuery('.slick-slider').on('init setPosition afterChange', sweep);
     }
   },
 

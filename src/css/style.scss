@@ -715,9 +715,8 @@ img[loading="lazy"] {
   opacity: 0;
   transition: opacity 0.4s ease;
 }
-img[loading="lazy"].loaded,
-.slick-slider img[loading="lazy"] {
-  opacity: 1; // safety net: slider images (incl. clones) are never left hidden
+img[loading="lazy"].loaded {
+  opacity: 1;
 }
 
 @keyframes shake {

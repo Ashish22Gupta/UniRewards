@@ -857,12 +857,22 @@ const App = {
   },
 
   initLazyImages() {
-    if ('IntersectionObserver' in window) {
-      const imgs = document.querySelectorAll('img[loading="lazy"]');
-      imgs.forEach(img => {
-        if (img.complete) img.classList.add('loaded');
-        else img.addEventListener('load', () => img.classList.add('loaded'));
+    const mark = (img) => img.classList.add('loaded');
+    const sweep = () => {
+      document.querySelectorAll('img[loading="lazy"]:not(.loaded)').forEach(img => {
+        if (img.complete) mark(img);
       });
+    };
+    document.addEventListener('load', (e) => {
+      if (e.target.tagName === 'IMG') mark(e.target);
+    }, true);
+    document.addEventListener('error', (e) => {
+      if (e.target.tagName === 'IMG') mark(e.target);
+    }, true);
+    sweep();
+    window.addEventListener('load', sweep);
+    if (window.jQuery) {
+      jQuery('.slick-slider').on('init setPosition afterChange', sweep);
     }
   },
 

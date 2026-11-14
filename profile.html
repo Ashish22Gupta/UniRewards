@@ -518,7 +518,7 @@
             const img = document.getElementById('avatarImg');
             img.src = savedAvatar;
             img.classList.remove('hidden');
-            document.getElementById('avatarPlaceholder').classList.add('hidden');
+            document.getElementById('avatarPlaceholder').classList.add('!hidden');
         }
 
         const avatarUploader = document.getElementById('avatarUploader');
@@ -536,7 +536,7 @@
                 const img = document.getElementById('avatarImg');
                 img.src = reader.result;
                 img.classList.remove('hidden');
-                document.getElementById('avatarPlaceholder').classList.add('hidden');
+                document.getElementById('avatarPlaceholder').classList.add('!hidden');
                 localStorage.setItem('profileAvatar', reader.result);
                 showToast('Profile picture updated!', 'success', 2000, 'check_circle');
             };
